@@ -13,6 +13,7 @@ int main(){
 	cout << "INSTAGRAM +i\n";
 	cout << "TWITTER +t\n";
 	cout << "WHATSAPP +w\n";
+	cout << "GITHUB +g\n";
 
 	getline(cin,l);
 
@@ -24,6 +25,9 @@ int main(){
 		system("xdg-open https://twitter.com/");
 	} else if (l == "w"){
 		system("xdg-open https://web.whatsapp.com/");
+	} else if (l == "g"){
+		system("xdg-open https://github.com/");
+
 	} else {
 		cout << "\ninvalid char\n";
 	}
