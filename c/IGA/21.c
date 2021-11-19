@@ -35,10 +35,11 @@ K - 10
 organização meramente numérica
 -------------------------------
 A 2 3 4 5 6 7 8 9 10 J Q K
-1-13 -> paus
-14-26 -> espadas
-27-39 -> copas
-40-53 -> ouros
+
+0-12 -> paus
+13-25 -> espadas
+26-38 -> copas
+39-52 -> ouros
 
 */
 
@@ -48,211 +49,211 @@ char * card(int cardN){
 
 	switch(cardN){
 		// paus
-			case 1:
+			case 0:
 				given_card = "A paus";
 				break;
 
-			case 2:
+			case 1:
 				given_card = "2 paus";
 				break;
 
-			case 3:
+			case 2:
 				given_card = "3 paus";
 				break;
 
-			case 4:
+			case 3:
 				given_card = "4 paus";
 				break;
 
-			case 5:
+			case 4:
 				given_card = "5 paus";
 				break;
 
-			case 6:
+			case 5:
 				given_card = "6 paus";
 				break;
 
-			case 7:
+			case 6:
 				given_card = "7 paus";
 				break;
 
-			case 8:
+			case 7:
 				given_card = "8 paus";
 				break;
 
-			case 9:
+			case 8:
 				given_card = "9 paus";
 				break;
 
-			case 10:
+			case 9:
 				given_card = "10 paus";
 				break;
 
-			case 11:
+			case 10:
 				given_card = "J paus";
 				break;
 
-			case 12:
+			case 11:
 				given_card = "Q paus";
 				break;
 
-			case 13:
+			case 12:
 				given_card = "K paus";
 				break;
 		// espadas
-			case 14:
+			case 13:
 				given_card = "A espadas";
 				break;
 
-			case 15:
+			case 14:
 				given_card = "2 espadas";
 				break;
 
-			case 16:
+			case 15:
 				given_card = "3 espadas";
 				break;
 
-			case 17:
+			case 16:
 				given_card = "4 espadas";
 				break;
 
-			case 18:
+			case 17:
 				given_card = "5 espadas";
 				break;
 
-			case 19:
+			case 18:
 				given_card = "6 espadas";
 				break;
 
-			case 20:
+			case 19:
 				given_card = "7 espadas";
 				break;
 
-			case 21:
+			case 20:
 				given_card = "8 espadas";
 				break;
 
-			case 22:
+			case 21:
 				given_card = "9 espadas";
 				break;
 
-			case 23:
+			case 22:
 				given_card = "10 espadas";
 				break;
 
-			case 24:
+			case 23:
 				given_card = "J espadas";
 				break;
 
-			case 25:
+			case 24:
 				given_card = "Q espadas";
 				break;
 
-			case 26:
+			case 25:
 				given_card = "K espadas";
 				break;
 		// copas
-			case 27:
+			case 26:
 				given_card = "A copas";
 				break;
 
-			case 28:
+			case 27:
 				given_card = "2 copas";
 				break;
 
-			case 29:
+			case 28:
 				given_card = "3 copas";
 				break;
 
-			case 30:
+			case 29:
 				given_card = "4 copas";
 				break;
 
-			case 31:
+			case 30:
 				given_card = "5 copas";
 				break;
 
-			case 32:
+			case 31:
 				given_card = "6 copas";
 				break;
 
-			case 33:
+			case 32:
 				given_card = "7 copas";
 				break;
 
-			case 34:
+			case 33:
 				given_card = "8 copas";
 				break;
 
-			case 35:
+			case 34:
 				given_card = "9 copas";
 				break;
 
-			case 36:
+			case 35:
 				given_card = "10 copas";
 				break;
 
-			case 37:
+			case 36:
 				given_card = "J copas";
 				break;
 
-			case 38:
+			case 37:
 				given_card = "Q copas";
 				break;
 
-			case 39:
+			case 38:
 				given_card = "K copas";
 				break;
 		// ouros
-			case 40:
+			case 39:
 				given_card = "A ouros";
 				break;
 
-			case 41:
+			case 40:
 				given_card = "2 ouros";
 				break;
 
-			case 42:
+			case 41:
 				given_card = "3 ouros";
 				break;
 
-			case 43:
+			case 42:
 				given_card = "4 ouros";
 				break;
 
-			case 44:
+			case 43:
 				given_card = "5 ouros";
 				break;
 
-			case 45:
+			case 44:
 				given_card = "6 ouros";
 				break;
 
-			case 46:
+			case 45:
 				given_card = "7 ouros";
 				break;
 
-			case 47:
+			case 46:
 				given_card = "8 ouros";
 				break;
 
-			case 48:
+			case 47:
 				given_card = "9 ouros";
 				break;
 
-			case 49:
+			case 48:
 				given_card = "10 ouros";
 				break;
 
-			case 50:
+			case 49:
 				given_card = "J ouros";
 				break;
 
-			case 51:
+			case 50:
 				given_card = "Q ouros";
 				break;
 
-			case 52:
+			case 51:
 				given_card = "k ouros";
 				break;
 
@@ -291,21 +292,21 @@ int card_points(int card){
 
 	int points = 0;
 
-	if (card == 1 || card == 14 || card == 28 || card == 40) points = 1;
-	else if (card == 2 || card == 15 || card == 29 || card == 41) points = 2;
-	else if (card == 3 || card == 16 || card == 30 || card == 42) points = 3;
-	else if (card == 4 || card == 17 || card == 31 || card == 43) points = 4;
-	else if (card == 5 || card == 18 || card == 32 || card == 44) points = 5;
-	else if (card == 6 || card == 19 || card == 33 || card == 45) points = 6;
-	else if (card == 7 || card == 20 || card == 34 || card == 46) points = 7;
-	else if (card == 8 || card == 21 || card == 35 || card == 47) points = 8;
-	else if (card == 9 || card == 22 || card == 36 || card == 48) points = 9;	
+	if (card == 0 || card == 13 || card == 26 || card == 39) points = 1;
+	else if (card == 1 || card == 14 || card == 27 || card == 40) points = 2;
+	else if (card == 2 || card == 15 || card == 28 || card == 41) points = 3;
+	else if (card == 3 || card == 16 || card == 29 || card == 42) points = 4;
+	else if (card == 4 || card == 17 || card == 30 || card == 43) points = 5;
+	else if (card == 5 || card == 18 || card == 31 || card == 44) points = 6;
+	else if (card == 6 || card == 19 || card == 32 || card == 45) points = 7;
+	else if (card == 7 || card == 20 || card == 33 || card == 46) points = 8;
+	else if (card == 8 || card == 21 || card == 34 || card == 47) points = 9;	
 	else points = 10;
 
 	return points;
 }
 
-int check_deck(int card, int deck[53]){
+int check_deck(int card, int deck[52]){
 
 	int r = 0;
 
@@ -315,10 +316,10 @@ int check_deck(int card, int deck[53]){
 	
 }
 
-int draw_card(int deck[53]){
+int draw_card(int deck[52]){
 
 	int card;
-	card = generateRandomInt(1, 52);
+	card = generateRandomInt(0, 51);
 	if (check_deck(card, deck) == 1)
 		return card;
 	else{
@@ -333,10 +334,10 @@ int twentyone(){ // main function
 	char * player_card = (char*)malloc(sizeof(char) * 100);
 	int w_l_21 = 0;
 	int wins = 0, looses = 0;
-	int deck[53];
+	int deck[52];
 
 	// attribute all cards a deck should have
-	for(int i=0;i<53;i++){
+	for(int i=0;i<52;i++){
 		deck[i] = 1;
 	}
 
@@ -350,10 +351,10 @@ int twentyone(){ // main function
 		if (choice == 1 || rounds == 0){
 
 			player_cardN = draw_card(deck);
-			deck[player_cardN-1] = 0;
+			deck[player_cardN] = 0;
 
 			table_cardN = draw_card(deck);
-			deck[table_cardN-1] = 0;
+			deck[table_cardN] = 0;
 
 		} else if (choice == 2){
 

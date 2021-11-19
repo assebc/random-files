@@ -1,13 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <time.h>
-#include <windows.h>
+/*#include <stdio.h>
 #include <conio.h>
+#include <string.h>
 #include <locale.h>
 #include <ctype.h>
-
+#include <windows.h>
 
 void gotoYX(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), (COORD) { x, y });
@@ -23,9 +19,9 @@ void visualizacao(char viz[]) {
     }
     printf("\n\n");
 }
-
+*/
 int forca(){ // main function
-	    do {
+/*	    do {
         char secreta[20] = { "" },
             resposta[20] = { "" },
             pista[20], letra;
@@ -98,5 +94,5 @@ int forca(){ // main function
         printf("Erros   = %3d\n", erros);
         gotoYX(20, 15);
     } 
-    return (acertos+erros);
+    return (acertos+erros);*/
 }
