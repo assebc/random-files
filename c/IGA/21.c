@@ -322,7 +322,7 @@ int draw_card(int deck[52]){
 	card = generateRandomInt(0, 51);
 	if (check_deck(card, deck) == 1)
 		return card;
-	else{
+	else if (check_deck(card, deck) == 0){
 		draw_card(deck);
 	}
 }
@@ -359,6 +359,7 @@ int twentyone(){ // main function
 		} else if (choice == 2){
 
 			table_cardN = draw_card(deck);
+			deck[table_cardN] = 0;
 
 		}
 		
