@@ -8,8 +8,8 @@
 
 int generateRandomInt(int min, int max) { // given function
 
-	srand((unsigned)time(NULL));
-	return min + rand() % (max - min);
+	//srand((unsigned)time(NULL));
+	return (rand() % ((max)- min)) + min;
 
 }
 
@@ -27,17 +27,17 @@ int guessnumber(){ // main function
 
 		if (findX == guessX){
 			puts("Parabéns acertaste!!\n");
-			sleep(5);
+			sleep(1);
 		} else if (findX > guessX){
 			++tries;
 			puts("Tenta outra vez, esse número é menor!!\n");
-			sleep(3);
+			sleep(1);
 			system("clear");
 			goto START;
 		} else {
 			++tries;
 			puts("Tenta outra vez, esse número é maior!!\n");
-			sleep(3);
+			sleep(1);
 			system("clear");
 			goto START;
 		}

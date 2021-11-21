@@ -306,25 +306,19 @@ int card_points(int card){
 	return points;
 }
 
-int check_deck(int card, int deck[52]){
-
-	int r = 0;
-
-	if (deck[card-1] == 1) r = 1;
-
-	return r;
-	
-}
 
 int draw_card(int deck[52]){
 
 	int card;
+
+
 	card = generateRandomInt(0, 51);
-	if (check_deck(card, deck) == 1)
+	if (deck[card] == 1){
+		deck[card] = 0;
 		return card;
-	else if (check_deck(card, deck) == 0){
+	} else if (deck[card] == 0){
 		draw_card(deck);
-	}
+	} else draw_card(deck);
 }
 
 int twentyone(){ // main function 
@@ -348,18 +342,14 @@ int twentyone(){ // main function
 	while(total_table_points < 21 && total_player_points < 21){
 
 		// draw cards
-		if (choice == 1 || rounds == 0){
-
+		if ( rounds == 0 || choice == 1){
+			
 			player_cardN = draw_card(deck);
-			deck[player_cardN] = 0;
-
 			table_cardN = draw_card(deck);
-			deck[table_cardN] = 0;
 
 		} else if (choice == 2){
 
 			table_cardN = draw_card(deck);
-			deck[table_cardN] = 0;
 
 		}
 		

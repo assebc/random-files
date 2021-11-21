@@ -359,6 +359,7 @@ void IGA(){
 
             printf("Pontuacao por jogo: 1\n");
             printf("Pontuacao global: 2 \n");
+            printf("Voltar ao menu principal: 3\n");
 
             putchar('\n');
 
@@ -389,6 +390,10 @@ void IGA(){
             	case 2:
             		pointsGlobal();
             		break;
+
+                case 3:
+                    goto HUB;
+                    break;
 
             	default:
             		system("clear");

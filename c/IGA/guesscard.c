@@ -43,63 +43,62 @@ int guesscard(){ // main function
 
 	int naipeN, carta, guessCarta;
 	int tries = 0;
-	char * guessNaipe = NULL;
-	char * naipe = NULL;
+	char guessNaipe, naipe;
 
 	carta = generateRandomInt(1,13);
 	naipeN = generateRandomInt(1,4);
 
 	switch(naipeN){
 		case 1:
-			naipe = "paus";
+			naipe = 'p';
 			break;
 
 		case 2:
-			naipe = "espadas";
+			naipe = 'e';
 			break;
 
 		case 3:
-			naipe = "copas";
+			naipe = 'c';
 			break;
 
 		case 4:
-			naipe = "ouros";
+			naipe = 'o';
 			break;
 
 	}
 
 	START:
 		puts("Tenta adivinhar qual a carta e o seu respetivo naipe\n");
-		puts("*nota_1 -> o seu input deverá ser o número da carta, ou 1 para ÀS, 11 para VALETE(J), 12 para DAMA(Q) e por fim, 13 para REI(K) e sem espaços o naipe*\n");
-		puts("*nota_2 *naipe -> o naipe pode ser paus, espadas, copas ou ouros\n");
+		puts("*nota_1 -> o seu input deverá ser o número da carta, ou 1 para ÀS, 11 para VALETE(J), 12 para DAMA(Q) e por fim, 13 para REI(K) e com 1 (um) espaço a inicial do naipe*\n");
+		puts("*nota_2 *naipe -> o naipe pode ser paus(input: P), espadas (input: E), copas(input: C) ou ouros(input: O)\n");
 
-		scanf("%d%s", &guessCarta, guessNaipe);
+		scanf("%d %c", &guessCarta, &guessNaipe);
 		putchar('\n');
 
 		if (carta == guessCarta){
-			if (strcmp(toLower(guessNaipe), naipe) == 0){
+			if (tolower(guessNaipe) == naipe){
 				puts("Parabéns acertaste a carta e o respetivo naipe!!\n");
-				sleep(5);
+				sleep(2);
 				system("clear");
 			} else {
 				++tries;
 				puts("Parabéns acertaste a carta porém erraste o naipe, tenta novamente!!\n");
-				sleep(3);
+				sleep(2);
 				system("clear");
 				goto START;
 			}
-		} else if (strcmp(toLower(guessNaipe), naipe) == 0){
+		} else if (tolower(guessNaipe) == naipe){
 			if (carta != guessCarta){
 				++tries;
 				puts("Parabéns acertaste a naipe porém erraste a carta, tenta novamente!!\n");
-				sleep(3);
+				sleep(2);
 				system("clear");
 				goto START;
 			}
 		} else{
 			++tries;
 			puts("Erraste a carta e o naipe, tenta novamente!!\n");
-			sleep(3);
+			sleep(2);
 			system("clear");
 			goto START;
 		}
