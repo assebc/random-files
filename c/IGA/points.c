@@ -55,9 +55,9 @@ int givepoints(int opcaojogo, int Ntries, int w_l_21, char * w_l, int forca){ //
 			break;
 
 		case 7: // 4 in line 2P
-			if (strcmp(w_l, "win") == 0) // player win
+			if (strcmp(w_l, "win") == 0) // player 1 win
 				score += 4; 
-			else if (strcmp(w_l, "loose") == 0) // player loose
+			else if (strcmp(w_l, "loose") == 0) // player 1 loose
 				score -= 4; 
 
 			break;

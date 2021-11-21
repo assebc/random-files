@@ -50,11 +50,11 @@ void playgames(int opcaojogo){ // execute game functions from all header files
             break;
 
         case 7:
-            w_l = fourline2P(); // win or loose
+            w_l = fourline2P(); // win or loose or draw
             break;
 
         case 8:
-            w_l = fourline(); // win or loose
+            w_l = fourline(); // win or loose or draw
             break;
 
         default:
