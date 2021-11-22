@@ -9,8 +9,8 @@ void inicia_tabuleiro()
 {
     int x, y;
 
-    for (x = 1; x <= 6; x++)
-        for (y = 1; y <= 7; y++)
+    for (x = 0; x < 6; x++)
+        for (y = 0; y < 7; y++)
             tabuleiro[x][y] = ' ';
 }
 
@@ -19,8 +19,8 @@ void mostra_tabuleiro()
     int x;
     printf("    | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n");
     printf("    |---|---|---|---|---|---|---|\n");
-    for (x = 1; x <= 6; x++) {
-        printf("    | %c | %c | %c | %c | %c | %c | %c |\n", tabuleiro[x][1], tabuleiro[x][2], tabuleiro[x][3], tabuleiro[x][4], tabuleiro[x][5], tabuleiro[x][6], tabuleiro[x][7]);
+    for (x = 0; x < 6; x++) {
+        printf("    | %c | %c | %c | %c | %c | %c | %c |\n", tabuleiro[x][0], tabuleiro[x][1], tabuleiro[x][2], tabuleiro[x][3], tabuleiro[x][4], tabuleiro[x][5], tabuleiro[x][6]);
         if (x != 0)
             printf("    |---|---|---|---|---|---|---|\n");
     }
@@ -28,7 +28,7 @@ void mostra_tabuleiro()
 }
 
 
-int jogada_Player(int jog)
+void jogada_Player(int jog)
 {
     int x, y, z, w, a, b, c, d, e;
 
@@ -42,25 +42,13 @@ int jogada_Player(int jog)
 
 
     for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][1] != ' ') z--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][2] != ' ') w--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][3] != ' ') a--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][4] != ' ') b--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][5] != ' ') c--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][6] != ' ') d--;
-    }
-    for (x = 1; x <= 6; x++) {
-        if (tabuleiro[x][7] != ' ') e--;
+        if (tabuleiro[x][0] != ' ') z--;
+        if (tabuleiro[x][1] != ' ') w--;
+        if (tabuleiro[x][2] != ' ') a--;
+        if (tabuleiro[x][3] != ' ') b--;
+        if (tabuleiro[x][4] != ' ') c--;
+        if (tabuleiro[x][5] != ' ') d--;
+        if (tabuleiro[x][6] != ' ') e--;
     }
     
     printf("Selecione a coluna pretendida: ");
@@ -69,39 +57,33 @@ int jogada_Player(int jog)
     if (z<1 || w<1 || a<1 || b<1 || c<1 || d<1 || e<1) {
         printf("Jogada invalida!\n");
         jogada_Player(jog);
-        
+    }
+
     if (y < 1 || y>7) {
         printf("Jogada Invalida, tente novamente.\n");
         jogada_Player(jog);
     }
 
     if (y == 1) {
-        if (jog == 1) tabuleiro[z][1] = 'X'; else tabuleiro[z][1] = 'O';
-        return 1;
+        if (jog == 1) tabuleiro[z][0] = 'X'; else tabuleiro[z][0] = 'O';
     }
-    if (y == 2) {
-        if (jog == 1) tabuleiro[w][2] = 'X'; else tabuleiro[w][2] = 'O';
-        return 1;
+    else if (y == 2) {
+        if (jog == 1) tabuleiro[w][1] = 'X'; else tabuleiro[w][1] = 'O';
     }
-    if (y == 3) {
-        if (jog == 1) tabuleiro[a][3] = 'X'; else tabuleiro[a][3] = 'O';
-        return 1;
+    else if (y == 3) {
+        if (jog == 1) tabuleiro[a][2] = 'X'; else tabuleiro[a][2] = 'O';
     }
-    if (y == 4) {
-        if (jog == 1) tabuleiro[b][4] = 'X'; else tabuleiro[b][4] = 'O';
-        return 1;
+    else if (y == 4) {
+        if (jog == 1) tabuleiro[b][3] = 'X'; else tabuleiro[b][3] = 'O';
     }
-    if (y == 5) {
-        if (jog == 1) tabuleiro[c][5] = 'X'; else tabuleiro[c][5] = 'O';
-        return 1;
+    else if (y == 5) {
+        if (jog == 1) tabuleiro[c][4] = 'X'; else tabuleiro[c][4] = 'O';
     }
-    if (y == 6) {
-        if (jog == 1) tabuleiro[d][6] = 'X'; else tabuleiro[d][6] = 'O';
-        return 1;
+    else if (y == 6) {
+        if (jog == 1) tabuleiro[d][5] = 'X'; else tabuleiro[d][5] = 'O';
     }
-    if (y == 7) {
-        if (jog == 1) tabuleiro[e][7] = 'X'; else tabuleiro[e][7] = 'O';
-        return 1;
+    else if (y == 7) {
+        if (jog == 1) tabuleiro[e][6] = 'X'; else tabuleiro[e][6] = 'O';
     }
 
 
@@ -111,13 +93,13 @@ void jogada_COM(int jog)
 {
     int x, y;
 
-    for (x = 1; x <= 6; x++)
-        for (y = 1; y <= 7; y++)
+    for (x = 0; x < 6; x++)
+        for (y = 0; y < 7; y++)
             if (tabuleiro[x][y] == ' ') {
                 if (jog == 1) tabuleiro[x][y] = 'X'; else tabuleiro[x][y] = 'O';
                 return;
             }
-    return;
+    return ;
 }
 
 void jogada(int jog, int tipo)
@@ -221,14 +203,15 @@ char * fourline2P(){ // main function for 2 players
     int tipo = 1;
 
     printf("                        4 em linha \n\n\n");
-    fim = ' '; n = 0; jog = 0;
+    fim = ' '; n = 0; jog = 1;
     inicia_tabuleiro();
 
     do {
-        n++; if (jog == 1) jog = 2; else jog = 1;
+        n++; 
         printf("Jogada %d \n \n", n);
         mostra_tabuleiro();
         jogada(jog, tipo);
+        if (jog == 1) jog = 2; else jog = 1;
         fim = fim_jogo(n);
     } while (fim == ' ');
 
@@ -249,9 +232,10 @@ char * fourline(){ // main function
     inicia_tabuleiro();
 
     do {
-        n++; if (jog == 1) jog = 2; else jog = 1;
+        n++; 
         printf("Jogada %d \n\n", n);
         mostra_tabuleiro();
+        if (jog == 1) jog = 2; else jog = 1;
         jogada(jog, tipo);
         fim = fim_jogo(n);
     } while (fim == ' ');
