@@ -13,12 +13,12 @@
 
 int main(){
 
-	system("clear");
+	clear_console();
 	printf("Entering IPCA GAMES ARCH(IGA) ...\n");
 	sleep(2);
 	printf("Loading ...\n");
 	sleep(2);
-	system("clear");
+	clear_console();
 
     IGA();
 
