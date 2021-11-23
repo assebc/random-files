@@ -58,7 +58,7 @@ void playgames(int opcaojogo){ // execute game functions from all header files
             break;
 
         default:
-            system("clear");
+            clear_console();
             printf("invalid input\n");
             break;
 
@@ -81,7 +81,7 @@ void IGA(){
 	int opcao, opcaojogo, opcaoscore, decisao;
 
 	HUB:
-	system("clear");
+	clear_console();
     printf("Selecione uma opcao: \n");
 
     putchar('\n');
@@ -101,7 +101,7 @@ void IGA(){
 
         	GAME_HUB: 
 
-            system("clear");
+            clear_console();
         
             puts("Selecione o jogo: \n");
             puts("*nota -> 2P significa que o jogo necessita de 2 jogadores\n");
@@ -131,11 +131,11 @@ void IGA(){
             	case 1:
             		GAME_1 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-                    system("clear");
+                    clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -159,11 +159,11 @@ void IGA(){
             	case 2:
             		GAME_2 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -186,11 +186,11 @@ void IGA(){
             	case 3:
             		GAME_3 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -213,11 +213,11 @@ void IGA(){
             	case 4:
             		GAME_4 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -240,11 +240,11 @@ void IGA(){
             	case 5:
             		GAME_5 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -267,11 +267,11 @@ void IGA(){
             	case 6:
             		GAME_6 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -294,11 +294,11 @@ void IGA(){
             	case 7:
             		GAME_7 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -321,11 +321,11 @@ void IGA(){
             	case 8:
             		GAME_8 :
 
-            		system("clear");
+            		clear_console();
 
             		playgames(opcaojogo);
                     sleep(2);
-            		system("clear");
+            		clear_console();
             		puts("Selecione a opcao: \n");
 
             		printf("Jogar novamente: 1\n");
@@ -346,7 +346,7 @@ void IGA(){
             		break;
 
             	default:
-            		system("clear");
+            		clear_console();
             		printf("invalid input\n");
 
             		break;
@@ -356,7 +356,7 @@ void IGA(){
 
         case 2: // score
 
-            system("clear");
+            clear_console();
             puts("Selecione que pontuacao deseja verificar: \n");
 
             putchar('\n');
@@ -400,7 +400,7 @@ void IGA(){
                     break;
 
             	default:
-            		system("clear");
+            		clear_console();
             		printf("invalid input\n");
             		break;
 
@@ -411,18 +411,18 @@ void IGA(){
 
         case 3: // players data 
 
-        	system("clear");
+        	clear_console();
         	playerdata();
         	break;
 
         case 4:	// exit
 
-        	system("clear");
+        	clear_console();
         	exit(0);
             break;
 
         default:
-        	system("clear");
+        	clear_console();
             printf("invalid input\n");
             break;
     }

@@ -59,7 +59,7 @@ void jogador1()
     {
         printf("\n\nPosicao invalida, tenta novamente!! \n\n");
         sleep(2);
-        system("clear");
+        clear_console();
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
         mostra_matriz();
         jogador1();
@@ -83,7 +83,7 @@ void jogador2()
     {
         printf("\n\nPosicao invalida, tenta novamente!! \n\n");
         sleep(2);
-        system("clear");
+        clear_console();
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
         jogador2();
     }
@@ -103,7 +103,7 @@ void jogadorCOM()
     if (matriz[x][y] != ' ')
     {
         sleep(2);
-        system("clear");
+        clear_console();
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
         jogadorCOM();
     }
@@ -125,14 +125,13 @@ char * rooster2P(){ // main funtion for 2 players
         mostra_matriz();
         jogador1();
         fim = verifica();
-        system("clear");
-
+        clear_console();
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
 
         if (fim != ' ')  break;
         jogador2();
         fim = verifica();
-        system("clear");
+        clear_console();
 
     } while (fim == ' ');
 
@@ -178,14 +177,14 @@ char * rooster(){ // main function
         mostra_matriz();
         jogador1();
         fim = verifica();
-        system("clear");
+        clear_console();
 
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
 
         if (fim != ' ') break;
         jogadorCOM();
         fim = verifica();
-        system("clear");
+        clear_console();
 
     } while (fim == ' ');
 
@@ -212,6 +211,6 @@ char * rooster(){ // main function
         strcpy(result,"draw");
             
     }
-    
+
     return result;
 }

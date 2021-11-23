@@ -5,6 +5,11 @@
 #include <time.h>
 #include <unistd.h> 
 
+void clear_console(){
+    system("clear");
+    system("cls");
+}
+
 
 int generateRandomInt(int min, int max) { // given function
 
@@ -32,13 +37,13 @@ int guessnumber(){ // main function
 			++tries;
 			puts("Tenta outra vez, esse número é menor!!\n");
 			sleep(1);
-			system("clear");
+			clear_console();
 			goto START;
 		} else {
 			++tries;
 			puts("Tenta outra vez, esse número é maior!!\n");
 			sleep(1);
-			system("clear");
+			clear_console();
 			goto START;
 		}
 

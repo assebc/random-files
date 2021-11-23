@@ -265,7 +265,7 @@ char * fourline2P(){ // main function for 2 players
     	}
 
     do {
-    	system("clear");
+    	clear_console();
     	++n;
     	putchar('\n');
     	print_jogada(n);
@@ -276,7 +276,7 @@ char * fourline2P(){ // main function for 2 players
     		fim = fim_jogo(n);
     		if (fim != ' ') break;
     		jog = 2;
-    		system("clear");
+    		clear_console();
     		++n;
     		putchar('\n');
     		print_jogada(n);
@@ -290,7 +290,7 @@ char * fourline2P(){ // main function for 2 players
     		fim = fim_jogo(n);
     		if (fim != ' ') break;
     		jog = 1;
-    		system("clear");
+    		clear_console();
     		++n;
     		putchar('\n');
     		print_jogada(n);
@@ -324,7 +324,7 @@ char * fourline(){ // main function
     	}
 
     do {
-    	system("clear");
+    	clear_console();
     	++n;
     	putchar('\n');
     	print_jogada(n);
@@ -335,7 +335,7 @@ char * fourline(){ // main function
     		fim = fim_jogo(n);
     		if (fim != ' ') break;
     		jog = 2;
-    		system("clear");
+    		clear_console();
     		++n;
     		putchar('\n');
     		print_jogada(n);
@@ -349,7 +349,7 @@ char * fourline(){ // main function
     		fim = fim_jogo(n);
     		if (fim != ' ') break;
     		jog = 1;
-    		system("clear");
+    		clear_console();
     		++n;
     		putchar('\n');
     		print_jogada(n);

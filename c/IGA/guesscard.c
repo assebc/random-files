@@ -79,12 +79,12 @@ int guesscard(){ // main function
 			if (tolower(guessNaipe) == naipe){
 				puts("Parabéns acertaste a carta e o respetivo naipe!!\n");
 				sleep(2);
-				system("clear");
+				clear_console();
 			} else {
 				++tries;
 				puts("Parabéns acertaste a carta porém erraste o naipe, tenta novamente!!\n");
 				sleep(2);
-				system("clear");
+				clear_console();
 				goto START;
 			}
 		} else if (tolower(guessNaipe) == naipe){
@@ -92,14 +92,14 @@ int guesscard(){ // main function
 				++tries;
 				puts("Parabéns acertaste a naipe porém erraste a carta, tenta novamente!!\n");
 				sleep(2);
-				system("clear");
+				clear_console();
 				goto START;
 			}
 		} else{
 			++tries;
 			puts("Erraste a carta e o naipe, tenta novamente!!\n");
 			sleep(2);
-			system("clear");
+			clear_console();
 			goto START;
 		}
 
