@@ -5,7 +5,7 @@
 #include <time.h>
 #include <unistd.h> 
 
-#include "guessnumber.h"
+#include "21.h"
 
 char matriz[3][3];
 

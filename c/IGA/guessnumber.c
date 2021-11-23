@@ -5,11 +5,7 @@
 #include <time.h>
 #include <unistd.h> 
 
-void clear_console(){
-    system("clear");
-    system("cls");
-}
-
+#include "playerdata.h"
 
 int generateRandomInt(int min, int max) { // given function
 

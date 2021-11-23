@@ -5,7 +5,7 @@
 #include <time.h>
 #include <unistd.h> 
 
-#include "guessnumber.h"
+#include "guesscard.h"
 
 /*
 

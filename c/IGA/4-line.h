@@ -1,4 +1,4 @@
-#include "guessnumber.h"
+#include "forca.h"
 
 void inicia_tabuleiro();
 void mostra_tabuleiro();

@@ -1,3 +1,4 @@
-void clear_console();
+#include "playerdata.h"
+
 int generateRandomInt(int min, int max);
 int guessnumber();

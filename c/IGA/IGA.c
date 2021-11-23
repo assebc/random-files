@@ -7,14 +7,7 @@
 #include <time.h>
 #include <unistd.h> 
 
-#include "guessnumber.h"
-#include "guesscard.h"
-#include "21.h"
-#include "rooster.h"
-#include "forca.h"
-#include "4-line.h"
 #include "points.h"
-#include "playerdata.h"
 
 
 void playgames(int opcaojogo){ // execute game functions from all header files
@@ -46,7 +39,7 @@ void playgames(int opcaojogo){ // execute game functions from all header files
             break;
 
         case 6:
-            forcagame = 1; // forca 
+            forcagame = forca(); // forca 
             break;
 
         case 7:

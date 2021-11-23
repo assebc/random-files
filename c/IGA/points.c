@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <time.h>
 
+#include "4-line.h"
 
 int givepoints(int opcaojogo, int Ntries, int w_l_21, char * w_l, int forca){ // points given in each game
 

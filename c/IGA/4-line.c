@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h> 
 
-#include "guessnumber.h"
+#include "forca.h"
+
 
 char tabuleiro[6][7];
 

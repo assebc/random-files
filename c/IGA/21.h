@@ -1,4 +1,4 @@
-#include "guessnumber.h"
+#include "guesscard.h"
 
 char * card(int cardN);
 char * replicate(char * x, int N);

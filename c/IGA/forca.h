@@ -1,4 +1,4 @@
-/*void gotoYX(int x, int y);
-void cores(int l, int f);
-void visualizacao(char viz[]);*/
-void forca();
+#include "rooster.h"
+
+void visualizacao(char viz[]);
+int forca();
