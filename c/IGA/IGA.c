@@ -116,6 +116,8 @@ void IGA(){
             printf("Jogo da forca: 6\n");
             printf("4 em linha (2P) : 7\n");
             printf("4 em linha: 8\n");
+            putchar('\n');
+            printf("Voltar ao menu princpal: 0\n");
 
             putchar('\n');
 
@@ -123,7 +125,9 @@ void IGA(){
 
             switch(opcaojogo){
 
-            
+                case 0:
+                    goto HUB;
+
             	case 1:
             		GAME_1 :
 

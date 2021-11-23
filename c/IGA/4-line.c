@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h> 
 
+#include "guessnumber.h"
+
 char tabuleiro[6][7];
 
 
@@ -19,7 +21,7 @@ void mostra_tabuleiro()
     int x;
     printf("    | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n");
     printf("    |---|---|---|---|---|---|---|\n");
-    for (x = 0; x < 6; x++) {
+    for (x = 1; x < 6; x++) {
         printf("    | %c | %c | %c | %c | %c | %c | %c |\n", tabuleiro[x][0], tabuleiro[x][1], tabuleiro[x][2], tabuleiro[x][3], tabuleiro[x][4], tabuleiro[x][5], tabuleiro[x][6]);
         if (x != 0)
             printf("    |---|---|---|---|---|---|---|\n");
@@ -27,6 +29,9 @@ void mostra_tabuleiro()
     printf("\n");
 }
 
+void print_jogada(int n){
+	printf("Jogada %d\n", n);
+}
 
 void jogada_Player(int jog)
 {
@@ -53,16 +58,8 @@ void jogada_Player(int jog)
     
     printf("Selecione a coluna pretendida: ");
     scanf("%d", &y);
+    putchar('\n');
 
-    if (z<1 || w<1 || a<1 || b<1 || c<1 || d<1 || e<1) {
-        printf("Jogada invalida!\n");
-        jogada_Player(jog);
-    }
-
-    if (y < 1 || y>7) {
-        printf("Jogada Invalida, tente novamente.\n");
-        jogada_Player(jog);
-    }
 
     if (y == 1) {
         if (jog == 1) tabuleiro[z][0] = 'X'; else tabuleiro[z][0] = 'O';
@@ -86,34 +83,89 @@ void jogada_Player(int jog)
         if (jog == 1) tabuleiro[e][6] = 'X'; else tabuleiro[e][6] = 'O';
     }
 
+    // check if play is valid
+    if (z<1 && y == 1) {
+        printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (w<1 && y == 2){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (a<1 && y == 3){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (b<1 && y == 4){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (c<1 && y == 5){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (d<1 && y == 6){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    } else if (e<1 && y == 7){
+    	printf("Jogada invalida!\n");
+        putchar('\n');
+        jogada_Player(jog);
+    }
+
+    if (y < 1 || y>7) {
+        printf("Jogada Invalida, tente novamente.\n");
+        putchar('\n');
+        jogada_Player(jog);
+    }
 
 }
 
 void jogada_COM(int jog)
-{
-    int x, y;
+{	
+	int x, z, w, a, b, c, d, e;
 
-    for (x = 0; x < 6; x++)
-        for (y = 0; y < 7; y++)
-            if (tabuleiro[x][y] == ' ') {
-                if (jog == 1) tabuleiro[x][y] = 'X'; else tabuleiro[x][y] = 'O';
-                return;
-            }
-    return ;
+    z = 6;
+    w = 6;
+    a = 6;
+    b = 6;
+    c = 6;
+    d = 6;
+    e = 6;
+
+    int play = generateRandomInt(1,7);
+
+    for (int x = 1; x <= 6; x++) {
+        if (tabuleiro[x][0] != ' ') z--;
+        if (tabuleiro[x][1] != ' ') w--;
+        if (tabuleiro[x][2] != ' ') a--;
+        if (tabuleiro[x][3] != ' ') b--;
+        if (tabuleiro[x][4] != ' ') c--;
+        if (tabuleiro[x][5] != ' ') d--;
+        if (tabuleiro[x][6] != ' ') e--;
+    }
+
+    if (play == 1) tabuleiro[z][play-1] = 'O';
+    else if (play == 2) tabuleiro[w][play-1] = 'O';
+    else if (play == 3) tabuleiro[a][play-1] = 'O';
+    else if (play == 4) tabuleiro[b][play-1] = 'O';
+    else if (play == 5) tabuleiro[c][play-1] = 'O';
+    else if (play == 6) tabuleiro[d][play-1] = 'O';
+    else if (play == 7) tabuleiro[e][play-1] = 'O';
+    
+    if (z<1 && play == 1) jogada_COM(jog);
+    else if (w<1 && play == 2) jogada_COM(jog);
+    else if (a<1 && play == 3) jogada_COM(jog);
+    else if (b<1 && play == 4) jogada_COM(jog);
+    else if (c<1 && play == 5) jogada_COM(jog);
+    else if (d<1 && play == 6) jogada_COM(jog);
+    else if (e<1 && play == 7) jogada_COM(jog);
+
+    if (play < 1 || play > 7) jogada_COM(jog);
+
 }
 
-void jogada(int jog, int tipo)
-{
-
-    if (tipo == 1) { 
-    	jogada_Player(jog);
-    	jogada_Player(jog);
-    } else if (tipo == 2) {
-    	jogada_Player(jog); 
-    	jogada_COM(jog);
-	}	
-
-}
 
 char fim_jogo(int n)                                //objectivo: avaliar se o jogo acabou (4emlinha empate) ou nao
 {
@@ -161,32 +213,34 @@ char * finaliza(int tipo, char venc)
     char * result = NULL;
 	if (tipo == 1){
 		if (venc == 'X'){
-			sleep(1);
 			printf("O jogador 1 ganhou, parabéns!!\n");
+			putchar('\n');
 			result = "win";
 		} else if (venc == 'O'){
 			sleep(1);
 			printf("O jogador 2 ganhou, parabéns!!\n");
+			putchar('\n');
 			result = "loose";
 		} else if (venc == 'E'){
 			sleep(1);
 			printf("O jogo terminou empatado!!\n");
+			putchar('\n');
 			result = "draw";
 		}
 
 	} else if (tipo == 2){
 
 		if (venc == 'X'){
-			sleep(1);
 			printf("O jogador 1 ganhou, parabéns!!\n");
+			putchar('\n');
 			result = "win";
 		} else if (venc == 'O'){
-			sleep(1);
 			printf("O computador ganhou, mais sorte para a próxima!!\n");
+			putchar('\n');
 			result = "loose";
 		} else if (venc == 'E'){
-			sleep(1);
 			printf("O jogo terminou empatado!!\n");
+			putchar('\n');
 			result = "draw";
 		}
 	}
@@ -199,48 +253,116 @@ char * fourline2P(){ // main function for 2 players
 
 
 	char fim;
-    int n, jog;
+	char * result = NULL;
+    int n = 0, jog;
     int tipo = 1;
 
-    printf("                        4 em linha \n\n\n");
-    fim = ' '; n = 0; jog = 1;
+    fim = ' '; jog = 1;
     inicia_tabuleiro();
 
+     if (tipo == 1) {
+    	
+    	}
+
     do {
-        n++; 
-        printf("Jogada %d \n \n", n);
+    	system("clear");
+    	++n;
+    	putchar('\n');
+    	print_jogada(n);
+    	putchar('\n');
         mostra_tabuleiro();
-        jogada(jog, tipo);
-        if (jog == 1) jog = 2; else jog = 1;
+        if (jog == 1){
+    		jogada_Player(jog);
+    		fim = fim_jogo(n);
+    		if (fim != ' ') break;
+    		jog = 2;
+    		system("clear");
+    		++n;
+    		putchar('\n');
+    		print_jogada(n);
+    		putchar('\n');
+    		mostra_tabuleiro();
+    		jogada_Player(jog);
+    		jog = 1;
+
+    	} else if (jog == 2){
+    		jogada_Player(jog);
+    		fim = fim_jogo(n);
+    		if (fim != ' ') break;
+    		jog = 1;
+    		system("clear");
+    		++n;
+    		putchar('\n');
+    		print_jogada(n);
+    		putchar('\n');
+    		mostra_tabuleiro();
+    		jogada_Player(jog);
+    		jog = 2;
+    	}
+
         fim = fim_jogo(n);
     } while (fim == ' ');
 
-    finaliza(tipo, fim);
+    result = finaliza(tipo, fim);
 
-    return 0;
+    return result;
 }
 
 
 char * fourline(){ // main function
 
-	char fim;
-    int n, jog;
-    int tipo = 2;
+		char fim;
+	char * result = NULL;
+    int n = 0, jog;
+    int tipo = 1;
 
-    printf("                        4 em linha \n\n\n");
-    fim = ' '; n = 0; jog = 0;
+    fim = ' '; jog = 1;
     inicia_tabuleiro();
 
+     if (tipo == 1) {
+    	
+    	}
+
     do {
-        n++; 
-        printf("Jogada %d \n\n", n);
+    	system("clear");
+    	++n;
+    	putchar('\n');
+    	print_jogada(n);
+    	putchar('\n');
         mostra_tabuleiro();
-        if (jog == 1) jog = 2; else jog = 1;
-        jogada(jog, tipo);
+        if (jog == 1){
+    		jogada_Player(jog);
+    		fim = fim_jogo(n);
+    		if (fim != ' ') break;
+    		jog = 2;
+    		system("clear");
+    		++n;
+    		putchar('\n');
+    		print_jogada(n);
+    		putchar('\n');
+    		mostra_tabuleiro();
+    		jogada_COM(jog);
+    		jog = 1;
+
+    	} else if (jog == 2){
+    		jogada_COM(jog);
+    		fim = fim_jogo(n);
+    		if (fim != ' ') break;
+    		jog = 1;
+    		system("clear");
+    		++n;
+    		putchar('\n');
+    		print_jogada(n);
+    		putchar('\n');
+    		mostra_tabuleiro();
+    		jogada_Player(jog);
+    		jog = 2;
+    	}
+
         fim = fim_jogo(n);
     } while (fim == ' ');
 
-    finaliza(tipo, fim);
+    result = finaliza(tipo, fim);
 
-    return 0;
+    return result;
 }
