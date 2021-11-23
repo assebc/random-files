@@ -46,7 +46,7 @@ void playgames(int opcaojogo){ // execute game functions from all header files
             break;
 
         case 6:
-            forcagame = forca(); // forca 
+            forcagame = 1; // forca 
             break;
 
         case 7:

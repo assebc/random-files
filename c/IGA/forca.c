@@ -20,7 +20,7 @@ void visualizacao(char viz[]) {
     printf("\n\n");
 }
 */
-int forca(){ // main function
+void forca(){ // main function
 /*	    do {
         char secreta[20] = { "" },
             resposta[20] = { "" },

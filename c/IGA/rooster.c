@@ -212,5 +212,6 @@ char * rooster(){ // main function
         strcpy(result,"draw");
             
     }
-
+    
+    return result;
 }

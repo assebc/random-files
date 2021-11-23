@@ -124,7 +124,7 @@ void jogada_Player(int jog)
 
 void jogada_COM(int jog)
 {	
-	int x, z, w, a, b, c, d, e;
+	int z, w, a, b, c, d, e;
 
     z = 6;
     w = 6;

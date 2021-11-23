@@ -319,6 +319,8 @@ int draw_card(int deck[52]){
 	} else if (deck[card] == 0){
 		draw_card(deck);
 	} else draw_card(deck);
+
+	return card;
 }
 
 int twentyone(){ // main function 
