@@ -38,11 +38,11 @@ void playgames(int opcaojogo){ // execute game functions from all header files
             break;
 
         case 4:
-            w_l = rooster2P(); // win1 or win2 or draw
+            w_l = rooster2P(); // win or win or draw
             break;
 
         case 5:
-            w_l = rooster(); // win1 or win2 or draw
+            w_l = rooster(); // win or win or draw
             break;
 
         case 6:

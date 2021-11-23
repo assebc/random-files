@@ -5,6 +5,8 @@
 #include <time.h>
 #include <unistd.h> 
 
+#include "guessnumber.h"
+
 char matriz[3][3];
 
 char verifica()
@@ -88,6 +90,26 @@ void jogador2()
     else matriz[x][y] = 'O';
 }
 
+void jogadorCOM()
+{
+    int x, y;
+    x = generateRandomInt(1,3);
+    y = generateRandomInt(1,3);
+    mostra_matriz();
+   
+
+    putchar('\n');
+
+    if (matriz[x][y] != ' ')
+    {
+        sleep(2);
+        system("clear");
+        printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
+        jogadorCOM();
+    }
+    else matriz[x][y] = 'O';
+}
+
 char * rooster2P(){ // main funtion for 2 players
 
 	
@@ -107,8 +129,7 @@ char * rooster2P(){ // main funtion for 2 players
 
         printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
 
-        if (fim != ' ')
-            break;
+        if (fim != ' ')  break;
         jogador2();
         fim = verifica();
         system("clear");
@@ -145,6 +166,51 @@ char * rooster2P(){ // main funtion for 2 players
 
 char * rooster(){ // main function
 
-	// ...
+	char fim;
+    char * result = malloc(sizeof(char)*5);
+
+    fim = ' ';
+    inicio();
+    do
+    {
+
+        printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
+        mostra_matriz();
+        jogador1();
+        fim = verifica();
+        system("clear");
+
+        printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
+
+        if (fim != ' ') break;
+        jogadorCOM();
+        fim = verifica();
+        system("clear");
+
+    } while (fim == ' ');
+
+    if (fim == 'X')
+    {
+        mostra_matriz();
+        printf("\n                         ###   JOGADOR 1 GANHOU!!!   ###\n");
+        putchar('\n');
+        strcpy(result,"win1");
+    }
+    else if (fim == 'O')
+    {
+        printf("                         ###  J O G O   D O   G A L O  ###\n\n\n");
+        mostra_matriz();
+        printf("\n                         ###   COMPUTADOR GANHOU!!!   ###\n");
+        putchar('\n');
+        strcpy(result,"win2");
+    }
+    else
+    {
+        mostra_matriz();
+        printf("\n                         ###   EMPATE!!!   ###\n");
+        putchar('\n');
+        strcpy(result,"draw");
+            
+    }
 
 }
