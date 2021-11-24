@@ -64,9 +64,6 @@ void playgames(int opcaojogo){ // execute game functions from all header files
 
 }
 
-/*
-printf("%*s, 40+strlen(name)/2, name, 40-strlen(name)/2, ""); // center text in shell (if wanted)
-*/
 
 void IGA(){
 
