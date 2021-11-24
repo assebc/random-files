@@ -67,12 +67,14 @@ int guesscard(){ // main function
 
 	}
 
-	START:
+	scanf("%d %c", &guessCarta, &guessNaipe);
+
+	while(guessCarta!=carta && guessNaipe!=naipe) {
 		puts("Tenta adivinhar qual a carta e o seu respetivo naipe\n");
 		puts("*nota_1 -> o seu input deverá ser o número da carta, ou 1 para ÀS, 11 para VALETE(J), 12 para DAMA(Q) e por fim, 13 para REI(K) e com 1 (um) espaço a inicial do naipe*\n");
 		puts("*nota_2 *naipe -> o naipe pode ser paus(input: P), espadas (input: E), copas(input: C) ou ouros(input: O)\n");
 
-		scanf("%d %c", &guessCarta, &guessNaipe);
+		
 		putchar('\n');
 
 		if (carta == guessCarta){
@@ -80,12 +82,13 @@ int guesscard(){ // main function
 				puts("Parabéns acertaste a carta e o respetivo naipe!!\n");
 				sleep(2);
 				clear_console();
+				break;
 			} else {
 				++tries;
 				puts("Parabéns acertaste a carta porém erraste o naipe, tenta novamente!!\n");
 				sleep(2);
 				clear_console();
-				goto START;
+				
 			}
 		} else if (tolower(guessNaipe) == naipe){
 			if (carta != guessCarta){
@@ -93,16 +96,15 @@ int guesscard(){ // main function
 				puts("Parabéns acertaste a naipe porém erraste a carta, tenta novamente!!\n");
 				sleep(2);
 				clear_console();
-				goto START;
 			}
 		} else{
 			++tries;
 			puts("Erraste a carta e o naipe, tenta novamente!!\n");
 			sleep(2);
 			clear_console();
-			goto START;
+			
 		}
-
+	}
 	
 	return tries;
 }

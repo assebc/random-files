@@ -20,28 +20,27 @@ int guessnumber(){ // main function
 	int tries = 0;
 	findX = generateRandomInt(0,100);
 
-	START: 
+	scanf("%d", &guessX);
+
+	while(guessX != findX){
 		puts("Entre 0 a 100 que número sou?\n");
-
-		scanf("%d", &guessX);
 		putchar('\n');
-
 		if (findX == guessX){
 			puts("Parabéns acertaste!!\n");
 			sleep(1);
+			break;
 		} else if (findX > guessX){
 			++tries;
 			puts("Tenta outra vez, esse número é menor!!\n");
 			sleep(1);
 			clear_console();
-			goto START;
 		} else {
 			++tries;
 			puts("Tenta outra vez, esse número é maior!!\n");
 			sleep(1);
 			clear_console();
-			goto START;
 		}
+	}
 
 	return tries;
 }
