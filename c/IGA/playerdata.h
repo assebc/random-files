@@ -3,8 +3,9 @@ typedef struct llist{
     struct llist *prox;
 } *LPlayers;
 
+void clear_console();
 LPlayers default_start();
 void append(LPlayers ** head_ref, int new_data);
 int size(LPlayers p);
-void clear_console();
+int lookfor(LPlayers * p, char * data);
 void playerdata();
