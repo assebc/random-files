@@ -8,13 +8,13 @@
 
 #include "IGA.h"
 
-// gcc -g guessnumber.c guesscard.c 21.c rooster.c forca.c 4-line.c points.c playerdata.c IGA.c main.c -o execute
+// gcc -g guessnumber.c guesscard.c 21.c rooster.c forca.c 4-line.c points.c IGA.c main.c -o execute
 // ./execute
 
 int main(){
 
 	clear_console();
-	printf("Entering IPCA GAMES ARCH(IGA) ...\n");
+	printf("Entering GAMES ARCH(GA).\n");
 	sleep(2);
 	printf("Loading ...\n");
 	sleep(2);

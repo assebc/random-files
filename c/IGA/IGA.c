@@ -68,7 +68,7 @@ void playgames(int opcaojogo){ // execute game functions from all header files
 void IGA(){
 
 
-	int opcao, opcaojogo, opcaoscore, decisao;
+	int opcao, opcaojogo, decisao;
 
 	HUB:
 	clear_console();
@@ -77,9 +77,7 @@ void IGA(){
     putchar('\n');
 
     printf("Selecione um jogo: 1\n");
-    printf("Ver pontuacoes : 2\n");
-    printf("Introduzir dados de jogadores: 3\n");
-    printf("Sair: 4\n");
+    printf("Sair: 2\n");
 
     putchar('\n');
 
@@ -344,68 +342,8 @@ void IGA(){
 
             break;
 
-        case 2: // score
-
-            clear_console();
-            puts("Selecione que pontuacao deseja verificar: \n");
-
-            putchar('\n');
-
-            printf("Pontuacao por jogo: 1\n");
-            printf("Pontuacao global: 2 \n");
-            printf("Voltar ao menu principal: 3\n");
-
-            putchar('\n');
-
-            scanf("%d", &opcaoscore);
-
-            switch(opcaojogo){
-            	int opcaojogo;
-            	case 1:
-            		puts("Selecione o jogo: \n");
-
-            		putchar('\n');
-
-           			printf("Adivinha o numero: 1\n");
-            		printf("Adivinha a carta: 2\n");
-            		printf("Jogo do 21: 3\n");
-            		printf("Jogo do galo (2P): 4\n");
-            		printf("Jogo do galo: 5\n");
-            		printf("Jogo da forca: 6\n");
-            		printf("4 em linha (2P) : 7\n");
-            		printf("4 em linha: 8\n");
-
-            		scanf("%d", &opcaojogo);
-
-            		pointsGame(opcaojogo);
-            		break;
-
-
-            	case 2:
-            		pointsGlobal();
-            		break;
-
-                case 3:
-                    goto HUB;
-                    break;
-
-            	default:
-            		clear_console();
-            		printf("invalid input\n");
-            		break;
-
-           		
-            }
-
-            break;
-
-        case 3: // players data 
-
-        	clear_console();
-        	playerdata();
-        	break;
-
-        case 4:	// exit
+        
+        case 2:	// exit
 
         	clear_console();
         	exit(0);
