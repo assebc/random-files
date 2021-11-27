@@ -1,4 +1,3 @@
-<a>git clone "https://github.com/assebc/git-bot.git"</a></br>
 cd git-bot</br>
 pip install -r requirements.txt</br>
 touch .env</br>
