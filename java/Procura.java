@@ -27,8 +27,6 @@ public class Procura{
 		int aind = 0;
 		for(int i = 0;i<array.length;i++)
 			if(!isElem(aux,array[i])) aux[aind++] = array[i];
-	
-		System.out.println(Arrays.toString(aux));
 
 		Object [] result = new Object[aind];
 		for(int i = 0;i<result.length;i++) result[i] = aux[i];
@@ -36,36 +34,17 @@ public class Procura{
 		return result;
 	}
 
-	public static Object [] onlyRepetidos(Object [] array){
-		Object[] semRepetidos = semRepetidos(array);
-		Object [] aux = new Object[array.length-semRepetidos.length];
-		int i = 0;
-		for(int j = 0;j<array.length;j++){
-			while(j<semRepetidos.length)
-				if(array[j]!=semRepetidos[j]) aux[i++] = array[j];
-			aux[j] = array[j];
-		}
-		
-		return aux;
-	}
-
 
 	public static void main(String [] args){
 
-		// Swap
-		// isElem
-		// IndexOfElem
-		// SemRepetidos
-		// Repetidos
-
-		Object [] a = new Object[3];
+		Object [] a = new Object[5];
 		a[0] = 'a';
-		a[1] = 'b';
-		a[2] = 'a';
+		a[1] = 'a';
+		a[2] = 'b';
+		a[3] = 'a';
+		a[4] = 'a';
 		System.out.println("array -> " +Arrays.toString(a));
 		Object [] noRep = semRepetidos(a);
 		System.out.println("semRepetidos -> " +Arrays.toString(noRep));
-		Object [] onlyRep = onlyRepetidos(a);
-		System.out.println("onlyRepetidos -> " +Arrays.toString(onlyRep));
 	}
 }
