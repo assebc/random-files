@@ -32,52 +32,234 @@
     </div>
 
     <div class="labels_space"></div>
+</body>
+
+
+<style>
+    ul{
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        width: 380px;
+        background-color: #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #E6E5EA;
+    }
+
+    * {padding:0; margin:0;}
+    a {text-decoration: none; color:#777582}
+    li {list-style: none;}
+    /* Navigation Styling */
+
+    .email a {
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 16px 20px;
+        width: 340px;
+        font-family: 'Lato', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        color: #1B1A21;
+
+    }
+    .email a:hover, a:focus {
+        background-color: #E6E5EA;
+        color: #1B1A21;
+    }
+    .email-ul ul {display: none;}
+    .email-ul li:hover li:focus ul {display: block;}
+
+    .email-ul ul a:before {
+        content: '\203A';
+        margin-right: 20px;
+    }
+
+    .email .certo:after {
+        content: '✔';
+        color: #FFFFFF;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid #aaa;
+        background: #00873F;
+        border-radius: 50%;
+        box-shadow: inset 0 1px 3px #00873F
+    }
+
+    .email .errado:after {
+        content: '!';
+        color: #FFFFFF;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        border: 1px solid #aaa;
+        background: #C41337;
+        border-radius: 50%;
+        box-shadow: inset 0 1px 3px #C41337;
+    }
+</style>
+
+
+<body>
     <div class="centered">
-        <label class="labels">
-            Business Email
-        <input type="text" placeholder="Enter your business email" id="businessemail">
-        </label>
-
-        <label class="labels">Business Size
-            <input type="text" placeholder="Select Size" id="size"> <!-- mudar para a lista de opções-->
-        </label>
-
-
-        <label class="labels">What is the most important thing to you in solution?
-            Real-time Analytics<input type="radio" id="rtas">
-            Scalability<input type="radio" id="sca">
-            Query Response Time<input type="radio" id="qrt">
-            Document Storage<input type="radio" id="ds">
-            High Concurrency<input type="radio" id="hc">
-            Full Text Search<input type="radio" id="fts">
-            Fast Data Ingest<input type="radio" id="fdi">
-            Price<input type="radio" id="price">
-
-        </label>
+        <p class="labels">Business Email</p>
     </div>
 
-    <!-- components & states
-        (business size)
-        1-10
-        11-15
-        51-100
-        101-250
-        250-1000
-        1000+
+    <nav class="email">
+        <ul class="email-ul">
+            <li><a type=>Enter your business email<span class="certo"></span></a>
+            <li><a type=>Enter your business email<span class="errado"></span></a>
+                <ul>
+                    <li><a href="#">1-10</a></li>
 
-        (if business email é @gmail/hotmail/outlook)
-        Please make sure this isn't personal email address
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+<style>
+    ul{
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        width: 380px;
+        background-color: #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #E6E5EA;
+    }
+
+    * {padding:0; margin:0;}
+    a {text-decoration: none;}
+    li {list-style: none;}
+    li:hover{
+        background: #eee;
+        cursor: pointer;
+    }
+    /* Navigation Styling */
+
+    .main-nav a {
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 16px 20px;
+        width: 340px;
+        font-family: 'Lato', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        color: #777582;
+    }
+    .main-nav a:hover, a:focus {
+        background-color: #E6E5EA;
+        color: #777582;
+    }
+    .main-nav-ul ul {display: none;}
+    .main-nav-ul li:hover ul {display: block;}
+
+    .main-nav .sub-arrow:after {
+        content: '\203A';
+        float: right;
+        margin-right: 20px;
+        transform: rotate(90deg);
+    }
+
+</style>
 
 
-    -->
-    <!--
-    <div class="button_page">
-        <button type="button"
-                data-toggle="modal">
-            <strong>Continue to Schedule a Time →</strong>
-        </button>
+<body>
+    <div class="centered">
+        <p class="labels">Business Size</p>
     </div>
-    -->
+
+    <nav class="main-nav">
+        <ul class="main-nav-ul">
+            <li><a href="#">Select Size<span class="sub-arrow"></span></a>
+                <ul>
+                    <li><a href="#" id="ten">1-10</a></li>
+                    <li><a href="#">11-15</a></li>
+                    <li><a href="#">51-100</a></li>
+                    <li><a href="#">101-250</a></li>
+                    <li><a href="#">250-1000</a></li>
+                    <li><a href="#">1000+</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <p class="labels_2">What is the most important thing to you in solution?</p>
+    <label>
+        <input type="radio" id="real"> Real-time Analytics
+        <input type="radio" id="sca"> Scalability
+        <input type="radio" id="qrt"> Query Response Time
+        <input type="radio" id="ds"> Document Storage
+        <input type="radio" id="hc"> High Concurrency
+        <input type="radio" id="fts"> Full Text Search
+        <input type="radio" id="fdi"> Fast Data Ingest
+        <input type="radio" id="price"> Price
+    </label>
+
+</body>
+
+<style>
+    ul{
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        width: 380px;
+        background-color: #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #E6E5EA;
+    }
+
+    * {padding:0; margin:0;}
+    a {text-decoration: none; color:#FFFFFF}
+    li {list-style: none;}
+    /* Navigation Styling */
+    .button a {
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 16px 0;
+        width: 340px;
+        font-family: 'Lato', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+        background-color: #8800CC;
+        border-radius: 4px;
+    }
+    .button a:hover, a:focus {
+        background-color: #AA00FF;
+        color: #FFFFFF;
+        padding: 15px 0;
+    }
+    .button-ul ul {display: none;}
+    .button-ul li:hover li:focus ul {display: block;}
+
+
+</style>
+
+<body>
+    <nav class="button">
+        <label class="button-ul">
+            <a href="qualified.html"><strong>Continue to Schedule a Time →</strong></a>
+        </label>
+    </nav>
+
 </body>
 
 

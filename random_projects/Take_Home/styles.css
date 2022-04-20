@@ -26,7 +26,7 @@
 
 /* fonts */
 @font-face {
-    font-family: Lato;
+    font-family: 'Lato';
     src:url("fonts/Lato");
 }
 
@@ -60,8 +60,8 @@ body{
 .circle_calendar{
     position: relative;
     background: #F9EDFF;
-    height: 240px;
-    width: 240px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
     display: block;
     margin-left: auto;
@@ -88,9 +88,27 @@ body{
 }
 
 .labels{
-    font-family: Lato;
+    font-family: 'Lato', serif;
+    font-size: 18px;
     font-style: normal;
     text-align: center;
+    padding-right: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    color: #4C4A57;
+}
+
+.labels_2{
+    font-family: 'Lato', serif;
+    font-size: 16px;
+    font-style: normal;
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
     color: #4C4A57;
 }
 
@@ -98,21 +116,18 @@ body{
     padding-bottom: 50px;
 }
 
-.button_page{
-
-}
-
 .qualified{
-    font-family: Lato;
+    font-family: 'Lato', serif;
     font-style: normal;
     font-size: 24px;
     line-height: 36px;
     color: #1B1A21;
     font-weight: 700;
+    text-align: center;
 }
 
 .qualified_p{
-    font-family: Lato;
+    font-family: 'Lato', serif;
     font-style: normal;
     text-align: center;
     margin-left: auto;
