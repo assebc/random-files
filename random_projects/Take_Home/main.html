@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book a demo</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <!-- main page -->
+    <div class="background"></div>
+
+    <div class="navigation">
+        <div class="logo_nav">
+            <img src="/logos/singlestore-logo-horizontal-on-black/RGB/singlestore_logo_horizontal_color_on-black_rgb.svg" alt="singlestore-logo">
+        </div>
+    </div>
+
+    <div class="centered">
+        <div class="circle_calendar">
+            <div class="calendar"></div>
+        </div>
+    </div>
+    <div class="undercircle"></div>
+
+    <h2 class="book_demo">Book a Demo</h2>
+    <div class="two">
+        <p class="two">Help us customize your demo by answering the following questions below.</p>
+    </div>
+
+    <div class="labels_space"></div>
+    <div class="centered">
+        <label class="labels">
+            Business Email
+        <input type="text" placeholder="Enter your business email" id="businessemail">
+        </label>
+
+        <label class="labels">Business Size
+            <input type="text" placeholder="Select Size" id="size"> <!-- mudar para a lista de opções-->
+        </label>
+
+
+        <label class="labels">What is the most important thing to you in solution?
+            Real-time Analytics<input type="radio" id="rtas">
+            Scalability<input type="radio" id="sca">
+            Query Response Time<input type="radio" id="qrt">
+            Document Storage<input type="radio" id="ds">
+            High Concurrency<input type="radio" id="hc">
+            Full Text Search<input type="radio" id="fts">
+            Fast Data Ingest<input type="radio" id="fdi">
+            Price<input type="radio" id="price">
+
+        </label>
+    </div>
+
+    <!-- components & states
+        (business size)
+        1-10
+        11-15
+        51-100
+        101-250
+        250-1000
+        1000+
+
+        (if business email é @gmail/hotmail/outlook)
+        Please make sure this isn't personal email address
+
+
+    -->
+    <!--
+    <div class="button_page">
+        <button type="button"
+                data-toggle="modal">
+            <strong>Continue to Schedule a Time →</strong>
+        </button>
+    </div>
+    -->
+</body>
+
+
+</html>

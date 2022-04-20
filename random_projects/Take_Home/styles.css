@@ -1,0 +1,124 @@
+/* primary palette */
+
+.p_black{
+    color: #1B1A21;
+}
+
+.p_purple{
+    color: #AA00FF;
+}
+
+.p_pink{
+    color: #FF00FF;
+}
+
+.s_pink{
+    color: #F4346F;
+}
+
+.background{
+    background: #E5E5E5;
+}
+
+.circle{
+    color: #F9EDFF;
+}
+
+/* fonts */
+@font-face {
+    font-family: Lato;
+    src:url("fonts/Lato");
+}
+
+/* navigation tab */
+.navigation{
+    height: 120px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: #1B1A21;
+}
+img{
+    width: 50%;
+}
+/* navigation tab logo */
+.logo_nav{
+    position: absolute;
+    left: 35px;
+    top: 35px;
+    bottom: 35px;
+}
+body{
+    padding-top: 210px;
+    padding-bottom: 40px;
+}
+.centered{
+    margin-left: auto;
+    margin-right: auto;
+}
+.circle_calendar{
+    position: relative;
+    background: #F9EDFF;
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.undercircle{
+    padding-bottom: 25px;
+}
+
+.book_demo{
+    font-family: 'Lato-Black', serif;
+    font-style: normal;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 42px;
+    text-align: center;
+}
+.two{
+    text-align: center;
+    width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.labels{
+    font-family: Lato;
+    font-style: normal;
+    text-align: center;
+    color: #4C4A57;
+}
+
+.labels_space{
+    padding-bottom: 50px;
+}
+
+.button_page{
+
+}
+
+.qualified{
+    font-family: Lato;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 36px;
+    color: #1B1A21;
+    font-weight: 700;
+}
+
+.qualified_p{
+    font-family: Lato;
+    font-style: normal;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    line-height: 26px;
+    color: #4C4A57;
+}
+
