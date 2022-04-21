@@ -1,29 +1,3 @@
-/* primary palette */
-
-.p_black{
-    color: #1B1A21;
-}
-
-.p_purple{
-    color: #AA00FF;
-}
-
-.p_pink{
-    color: #FF00FF;
-}
-
-.s_pink{
-    color: #F4346F;
-}
-
-.background{
-    background: #E5E5E5;
-}
-
-.circle{
-    color: #F9EDFF;
-}
-
 /* fonts */
 @font-face {
     font-family: 'Lato';
@@ -57,6 +31,9 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.circle_equalize{
+    padding-bottom: 7.5px;
+}
 .circle_calendar{
     position: relative;
     background: #F9EDFF;
@@ -66,9 +43,21 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-
 }
-.undercircle{
+
+.calendar{
+    background: linear-gradient(180deg, #AA00FF 0%, #00A3D7 100%);
+    position: relative;
+    top: 62.5px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.under_circle{
     padding-bottom: 25px;
 }
 
@@ -79,6 +68,7 @@ body{
     font-weight: 700;
     line-height: 42px;
     text-align: center;
+    padding-bottom: 10px;
 }
 .two{
     text-align: center;
@@ -87,12 +77,52 @@ body{
     margin-right: auto;
 }
 
+.column{
+    padding-top: 15px;
+
+}
+
+.two_two_1{
+    text-align: left;
+    width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3px;
+    padding-left: 50px;
+
+}
+
+.two_two_2{
+    text-align: left;
+    width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+}
+
+.two_two_3{
+    text-align: left;
+    width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+}
+
+.two_two_4{
+    text-align: left;
+    width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+}
+
 .labels{
     font-family: 'Lato', serif;
     font-size: 18px;
     font-style: normal;
     text-align: center;
-    padding-right: 270px;
+    padding-right: 269px;
+    padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -104,7 +134,7 @@ body{
     font-size: 16px;
     font-style: normal;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-right: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -112,8 +142,17 @@ body{
     color: #4C4A57;
 }
 
-.labels_space{
-    padding-bottom: 50px;
+.labels_3{
+    font-family: 'Lato', serif;
+    font-size: 18px;
+    font-style: normal;
+    text-align: center;
+    padding-right: 280px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    color: #4C4A57;
 }
 
 .qualified{
@@ -124,6 +163,18 @@ body{
     color: #1B1A21;
     font-weight: 700;
     text-align: center;
+}
+
+.calendar_qualified{
+    background: linear-gradient(180deg, #AA00FF 0%, #00A3D7 100%);
+    position: relative;
+    top: 62.5px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .qualified_p{
@@ -137,3 +188,14 @@ body{
     color: #4C4A57;
 }
 
+.calendar_not_qualified{
+    background: linear-gradient(180deg, #AA00FF 0%, #00A3D7 100%);
+    position: relative;
+    top: 62.5px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

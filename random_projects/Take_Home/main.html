@@ -20,22 +20,23 @@
     </div>
 
     <div class="centered">
+        <div class="circle_equalize"></div>
         <div class="circle_calendar">
             <div class="calendar"></div>
         </div>
     </div>
-    <div class="undercircle"></div>
+    <div class="under_circle"></div>
 
     <h2 class="book_demo">Book a Demo</h2>
     <div class="two">
         <p class="two">Help us customize your demo by answering the following questions below.</p>
     </div>
 
-    <div class="labels_space"></div>
 </body>
 
 
 <style>
+
     ul{
         list-style-type: none;
         margin: auto;
@@ -63,22 +64,25 @@
         font-weight: 400;
         font-size: 22px;
         line-height: 20px;
-        color: #1B1A21;
-
+        color: #777582;
     }
+
     .email a:hover, a:focus {
-        background-color: #E6E5EA;
-        color: #1B1A21;
+        background: #E6E5EA;
+        color: #AA00FF;
+        border-inline-color: #C550FF;
+
     }
     .email-ul ul {display: none;}
     .email-ul li:hover li:focus ul {display: block;}
 
     .email-ul ul a:before {
-        content: '\203A';
-        margin-right: 20px;
+        margin:auto;
     }
 
     .email .certo:after {
+        float: right;
+        margin-right: 20px;
         content: '✔';
         color: #FFFFFF;
         position: absolute;
@@ -91,7 +95,9 @@
         box-shadow: inset 0 1px 3px #00873F
     }
 
-    .email .errado:after {
+    .email .errado:after{
+        float: right;
+        margin-right: 20px;
         content: '!';
         color: #FFFFFF;
         position: absolute;
@@ -103,6 +109,39 @@
         border-radius: 50%;
         box-shadow: inset 0 1px 3px #C41337;
     }
+
+    input[type=email] {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 380px;
+        background-color: #E6E5EA;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 3px solid #E6E5EA;
+
+        /*
+            enquanto se escreve a border muda a cor
+            border-color: #AA00FF
+         */
+    }
+
+    input[placeholder]{
+
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 16px 20px;
+        width: 380px;
+        font-family: 'Lato', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        color: #777582;
+        background: #E6E5EA;
+    }
+
 </style>
 
 
@@ -112,17 +151,19 @@
     </div>
 
     <nav class="email">
-        <ul class="email-ul">
-            <li><a type=>Enter your business email<span class="certo"></span></a>
-            <li><a type=>Enter your business email<span class="errado"></span></a>
-                <ul>
-                    <li><a href="#">1-10</a></li>
-
-                </ul>
-            </li>
+        <ul>
+            <li><label><input type="email" placeholder="Enter a business email"></label></li>
+            <!-- class="certo" class="errado"-->
         </ul>
     </nav>
+            <!--
+                not working properly
 
+                class="certo" class="errado"
+                need to make this a text input wise
+                the symbols for right or wrong need to be more on the right, kinda look a like the arrow down on 'business size'
+
+            -->
 </body>
 
 <style>
@@ -158,11 +199,29 @@
         font-size: 22px;
         line-height: 20px;
         color: #777582;
+        background: #E6E5EA;
     }
-    .main-nav a:hover, a:focus {
-        background-color: #E6E5EA;
+
+    .main-nav-2 a {
+        display: block;
+        position: relative;
+        margin: auto;
+        padding: 16px 20px;
+        width: 340px;
+        font-family: 'Lato', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 20px;
+        color: #777582;
+        background: #FFFFFF;
+    }
+
+    .main-nav-2 a:hover, a:focus {
+        background: #E6E5EA;
         color: #777582;
     }
+
     .main-nav-ul ul {display: none;}
     .main-nav-ul li:hover ul {display: block;}
 
@@ -178,13 +237,13 @@
 
 <body>
     <div class="centered">
-        <p class="labels">Business Size</p>
+        <p class="labels_3">Business Size</p>
     </div>
 
     <nav class="main-nav">
         <ul class="main-nav-ul">
             <li><a href="#">Select Size<span class="sub-arrow"></span></a>
-                <ul>
+                <ul class="main-nav-2">
                     <li><a href="#" id="ten">1-10</a></li>
                     <li><a href="#">11-15</a></li>
                     <li><a href="#">51-100</a></li>
@@ -195,18 +254,87 @@
             </li>
         </ul>
     </nav>
+</body>
 
+<style>
+    ul {
+
+    }
+    .radio{
+
+    }
+    * {padding:0; margin:0;}
+    a {text-decoration: none;}
+    li {list-style: none;}
+    li:hover{
+        background: #eee;
+        cursor: pointer;
+    }
+    /* Navigation Styling */
+
+    .radio a {
+
+    }
+    .radio a:hover, a:focus {
+        background-color: #E6E5EA;
+        color: #777582;
+    }
+    .radio ul {display: none;}
+    .radio li:hover ul {display: block;}
+
+</style>
+
+
+<body>
     <p class="labels_2">What is the most important thing to you in solution?</p>
-    <label>
-        <input type="radio" id="real"> Real-time Analytics
-        <input type="radio" id="sca"> Scalability
-        <input type="radio" id="qrt"> Query Response Time
-        <input type="radio" id="ds"> Document Storage
-        <input type="radio" id="hc"> High Concurrency
-        <input type="radio" id="fts"> Full Text Search
-        <input type="radio" id="fdi"> Fast Data Ingest
-        <input type="radio" id="price"> Price
-    </label>
+
+    <div class="column">
+        <div class="two_two_1">
+            <label>
+                <input type="radio" id="real" checked="checked"> Real-time Analytics
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="sca"> Scalability
+            </label>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="two_two_2">
+            <label>
+                <input type="radio" id="qrt"> Query Response Time
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="ds"> Document Storage
+            </label>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="two_two_3">
+            <label>
+                <input type="radio" id="hc"> High Concurrency
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="fts"> Full Text Search
+            </label>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="two_two_4">
+            <label>
+                <input type="radio" id="fdi"> Fast Data Ingest
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="price"> Price
+            </label>
+        </div>
+    </div>
+
+        <!--
+            not working properly
+
+            need to design the radio
+
+        -->
+
 
 </body>
 
@@ -254,13 +382,27 @@
 </style>
 
 <body>
+    <div class="under_circle"></div>
     <nav class="button">
         <label class="button-ul">
             <a href="qualified.html"><strong>Continue to Schedule a Time →</strong></a>
         </label>
+        <!--
+            not working properly
+
+            need to do the relatable to an if statement in the css for the button
+
+            restriction:
+                + if the radio going by ids:
+                    - ds
+                    - fts
+                    - price
+
+                + if the size selected is 1-10
+        -->
     </nav>
 
 </body>
-
+-
 
 </html>
