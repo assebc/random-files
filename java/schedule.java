@@ -52,6 +52,16 @@ public class schedule{
         return (parseInt(parts.get(2))-parseInt(parts.get(0))*60 + parseInt(parts.get(2))-parseInt(parts.get(1)));
     }
 
+    public List<String> insidemeetings(List<String> s1, List<String> s2){
+        // ["17:00","18:30"] ["18:00","20:00"] ["18:00","18:30"]
+
+
+    }
+
+    public List<List<String>> insidemeetingsgeral(List<List<String>> meet1,List<List<String>> meet2 ){
+
+    }
+
     public boolean timetomeet(List<String> time){
         return timebetweenmeetings(time)<=this.period;
     }
@@ -95,17 +105,33 @@ public class schedule{
 
         person1.setperiod(30); person2.setperiod(30);
 
+        List<List<String>> meets1 = betweenmeetinggeral(person1.meetings);
+        List<List<String>> meets2 =  betweenmeetinggeral(person2.meetings);
+        List<String> bounds11 = betweenmeetings(person1.meetings.get(0),person1.meetings.get(1));
+        List<String> bounds12 = betweenmeetings(person1.meetings.last(),person1.meetings.get(person1.meetings.get(person1.meetings.size()-1)));
+        List<String> bounds21 = betweenmeetings(person2.meetings.get(0),person1.meetings.get(1));
+        List<String> bounds22 = betweenmeetings(person2.meetings.last(),person1.meetings.get(person1.meetings.get(person1.meetings.size()-1)));
+        List<List<String>> res = new ArrayList<>(betweenmeetings(bounds12,bounds22));
+        res.add(insidemeetings(bounds11,bounds21));
+        for(List<String> s: insidemeetingsgeral(meets1,meets2)) res.add(s)); // final answer
+
     }
 
 }
 
 /*
-    [["9:00","10:30"],["12:00",13:00],["16:00","18:00"]] 3
+    [["9:00","10:30"],["12:00","13:00"],["16:00","18:00"]] 3
     ["9:00","20:00"]
+
+
 
     [["10:00","11:30"],["12:30","14:30"],["14:30","15:00"],["16:00","17:00"]] 4
     ["10:00","18:30"]
 
+    atm:
+     [["10:30","12:00"],["13:00","16:00"]] ["18:00","20:00"]
+     [["11:30","12:30"],["15:00","16:00"]] ["17:00","18:30"]
+    ["18:00","18:30"]
     30 min
 
     res: [["11:30","12:00"],["15:00,"16:00"],["18:00","18:30"]]
