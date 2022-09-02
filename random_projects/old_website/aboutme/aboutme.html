@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>About me</title>
+        <link rel="stylesheet" type="text/css" href="aboutme.css">
+        <link rel="shortcut icon" type="image/png"  href="../imgs/favicon.png">
+    </head>
+
+    <body>
+        <header>
+            <a href="../index.html" class="logo">
+                <img src="../imgs/logo.png" id="logo" width="150px" height="150px">
+            </a>
+
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="aboutme/aboutme.html" class="active">About Me</a></li>
+            </ul>
+        </header>
+
+        <section>
+            <!-- images for background-->
+            <img src="../imgs/sun.png" id="sun"> <!-- second image for background--> 
+            <div class="square" style="background: rgba(255,255,255,0.5);">            
+                <p>
+                    Hi there! My name is Cláudio Bessa, I'm from Portugal and I'm currently <a id="age"></a> years old.<br/><br/>
+                    I started programming when I was in middle school but my first project was in my last year of High School!
+                    Me and my college we created a car that had built in sensors that able it to drive completely by its own using Arduino.
+                    For that same project we needed to share it so I decided to develop a website using HTML and CSS.<br/><br/><br/>
+
+                    After being accepted in University of Minho I made a few more projects due to classes in different languages using different methods 
+                    such as recreating pacman in Haskell, creating a calculator using stack methods in C, creating a smart city in Java and others.
+                    Lately I've been working on some projects, nothing to do with university, to develop new skills including new languages as well!
+                    <br/><br/>
+        
+                    I recently took a summer internship at Sentinel where I performed a junior software developer role using C++ and Qt.<br/><br/>
+
+                    In terms of big life achievements, even though I am only <a id="age2"></a> years old, I really have a few, being the two biggest ones being honored for my grades
+                    by <em>Sociedade Martins Sarmento</em> in 2012 and more recently won gold medal at University National Championship in volleyball in 2021.<br/><br/>
+
+                    Be free to know more about my journey by downloading my <a href="https://github.com/assebc/resume-cv/raw/main/resume.pdf" id="bessa">CV</a>!
+               </p>
+            </div>
+
+            <script type="text/javascript">
+                var dt1 = new Date(2002,10,13);
+                var dt2 = new Date(Date.now());
+                var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+                diff /= (60 * 60 * 24);
+                if((dt2.getUTCMonth() == dt1.getUTCMonth() ^ dt2.getUTCDay() < dt1.getUTCDay()) || (dt2.getUTCMonth() < dt1.getUTCMonth())){
+                    document.getElementById("age").innerHTML = Math.abs(Math.round(diff/365.25)-1);
+                    document.getElementById("age2").innerHTML = Math.abs(Math.round(diff/365.25)-1);
+                } else{
+                    document.getElementById("age").innerHTML = Math.abs(Math.round(diff/365.25));
+                    document.getElementById("age2").innerHTML = Math.abs(Math.round(diff/365.25));
+                }
+                
+            </script>
+            <img src="../imgs/beach.png" id="behind"> <!-- back image for background-->
+        </section>
+
+        <div class="contact" id="contact">
+            <ul>
+                <li><a href="https://www.youtube.com/channel/UCYXW07u06W_eyY_GMJcQDaw" target="_blank"><img src="../imgs/youtube.png" id="youtube" width="50px" height="50px"></a></li>
+                <li><a href="https://www.instagram.com/bessitos_" target="_blank"><img src="../imgs/instagram.png" id="instagram" width="40px" height="40px"></a></li>
+                <li><a href="https://www.twitch.tv/bessitos" target="_blank"><img src="../imgs/twitch.png" id="twitch" width="40px" height="40px"></a></li>
+                <li><a href="https://www.linkedin.com/in/claudio-bessa/" target="_blank"><img src="../imgs/linkedin.png" id="linkedin" width="40px" height="40px"></a></li>
+                <li><a href="https://github.com/assebc" target="_blank"><img src="../imgs/github.png" id="github" width="40px" height="40px"></a></li>
+                <li><a href="mailto: bessaprofessional@gmai.com" target="_blank"><img src="../imgs/gmail.png" id="gmail" width="45px" height="50px"></a></li>
+                <li><a href="https://paypal.me/bessa11" target="_blank"><img src="../imgs/paypal.png" id="paypal" width="40px" height="40px"></a></li>
+            </ul>
+        </div>
+    </body>
+</html>
