@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: cyan;
+}
+
+::selection{
+    color: #ffff;
+    background: cyan;
+}
+
+.wrapper{
+    width: 420px;
+    border-radius: 7px;
+    background-color: #ffff;
+    padding: 25px 28px 45px;
+    box-shadow: 7px 7px 20px rgba(0,0,0,0.05);
+}
+
+.wrapper header{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.wrapper .search{
+    position: relative;
+    margin: 35px 0 18px;
+}
+
+.search input{
+    height: 53px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0 42px;
+    border: 1px solid #999;
+}
+
+.search input:focus{
+    padding: 0 41px;
+    border: 2px solid cyan;
+}
+
+.search input::placeholder{
+    color: #888888;
+}
+
+.search :where(i, span){
+    position: absolute;
+    top: 50%;
+    color: #999;
+    transform: translateY(-50%);
+}
+
+.search i{
+    left: 18px;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.search input:focus ~ i{
+    color: cyan;
+}
+
+.search span{
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+}
+
+.search input:valid ~ span{
+    display: block;
+}
+
+.wrapper .info_text{
+    font-size: 13px;
+    color: #9A9A9A;
+    margin: -3px 0 -10px;
+}
+
+.wrapper.active .info_text{
+    display: none;
+}
+
+.info_text span{
+    font-weight: 500;
+}
+
+.wrapper ul{
+    height: 0;
+    opacity: 0;
+    padding-right: 1px;
+    overflow-y: hidden;
+    transition: all 0.2s ease;
+}
