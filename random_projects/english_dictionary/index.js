@@ -7,5 +7,7 @@ const wrapper = document.querySelector(".wrapper"),
     let audio;
 
 function data(result, word){
-    if(result.title){}
+    if(result.title){
+        infoText.innerHTML="Can't find meaning of"
+    }
 }
