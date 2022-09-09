@@ -70,33 +70,43 @@ int main(){
         cout << endl << "choice ";
         cin >> input;
         cout << endl;
-        
-        if(input=='a'){
-            cout << "Add a new description: " << endl;
-            cin.clear();
-            cin.ignore();
-            getline(cin, input_desc);
-
-            TodoItem newItem;
-            newItem.create(input_desc);
-            todoItems.push_back(newItem);
-        } else if(input == 'c'){
-            cout << "Enter id to mark completed: ";
-            cin >> input_id;
-
-            for(it = todoItems.begin(); it!= todoItems.end(); it++)
-                if(input_id == it->getId()){
-                    it->setCompleted(true);
-                    break;
-                }
-        } else if(input == 'r'){
-            cout << "Enter id to remove: ";
-            cin >> input_id;
-
-            for(it = todoItems.begin(); it!= todoItems.end(); it++)
-                if(input_id == it->getId()) todoItems.erase(it);
+        switch(input){
+            case 'a':
+                cout << "Add a new description: " << endl;
+                cin.clear();
+                cin.ignore();
+                getline(cin, input_desc);
                 
-        } else if(input == 'q') cout << "Have a nice day!" << endl;
-        else cout << "Invalid input" << endl;          
+                TodoItem newItem;
+                newItem.create(input_desc);
+                todoItems.push_back(newItem);
+                break;
+
+            case 'c':
+                cout << "Enter id to mark completed: ";
+                cin >> input_id;
+
+                for(it = todoItems.begin(); it!= todoItems.end(); it++)
+                    if(input_id == it->getId()){
+                        it->setCompleted(true);
+                        break;
+                    }
+
+                break;
+            case 'r':
+                cout << "Enter id to remove: ";
+                cin >> input_id;
+
+                for(it = todoItems.begin(); it!= todoItems.end(); it++)
+                    if(input_id == it->getId()) todoItems.erase(it);
+            break;
+
+            case 'q':
+                cout << "Have a nice day!" << endl;
+                break; 
+            
+            default:
+                cout << "Invalid input" << endl;  
+        }        
     }
 };
