@@ -5,9 +5,9 @@ var gameSpeed = 100;
 $(document).ready$(function(){
     console.log("Ready Player One!");
     createBoard();
-    $(".btn").click(function(){
+    document.getElementById("btn").onclick = function(){
         startGame();
-    });
+    };
 });
 
 var Snake = {
@@ -45,7 +45,7 @@ function moveSnake(){
             head[1] -=1;
             break;
         case 'u':
-            head[0] -=1;
+            head[0]-=1;
             break;
         case 'd':
             head[0] +=1;
