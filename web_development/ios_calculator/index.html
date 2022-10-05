@@ -4,46 +4,40 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
         <title>IOS Calculator</title>
     </head>
 
     <body>
-        <script type="text/js" src="js/script"></script>
+        <div class="container">
 
-        <div class="top_display">1423</div>
-
-        <div class="bot_display">
-
-            <div class="operators">
-                <div class="divide"></div>
-                <div class="mult"></div>
-                <div class="subtract"></div>
-                <div class="sum"></div>
-                <div class="equals"></div>
+            <div class="result">
+                <span>0</span>
             </div>
-
-            <div class="numbers">
-                <div class="one"></div>
-                <div class="two"></div>
-                <div class="three"></div>
-                <div class="four"></div>
-                <div class="five"></div>
-                <div class="six"></div>
-                <div class="seven"></div>
-                <div class="eight"></div>
-                <div class="nine"></div>
+            
+            <div class="buttons">
+                <button class="item item1 clear">C</button>
+                <button class="item item1 negative" value="+/-">+/-</button>
+                <button class="item mod sign" value="%">%</button>
+                <button class="item item3 sign" value="/">/</button>
+                <button class="item numbers" value="7">7</button>
+                <button class="item numbers" value="8">8</button>
+                <button class="item numbers" value="9">9</button>
+                <button class="item item3 sign" value="x">x</button>
+                <button class="item numbers" value="4">4</button>
+                <button class="item numbers" value="5">5</button>
+                <button class="item numbers" value="6">6</button>
+                <button class="item item3 sign" value="-">-</button>
+                <button class="item numbers" value="1">1</button>
+                <button class="item numbers" value="2">2</button>
+                <button class="item numbers" value="3">3</button>
+                <button class="item item3 sign" value="+">+</button>
+                <button class="item zero numbers" value="0">0</button>
+                <button class="item dot">.</button>
+                <button class="item item3 equals">=</button>
             </div>
-
-            <div class="clear_numbers">
-
-            </div>
-
-            <div class="last_line">
-
-            </div>
-
         </div>
 
+        <script src="js/script.js"></script>
     </body>
 </html>
