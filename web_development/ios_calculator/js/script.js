@@ -54,15 +54,23 @@ getSign();
 
 equals.addEventListener('click', () => {
     result.innerHTML = "";
-    if(sign === "+"){
-        resultValue = firstValue + secondValue;   
-    } else if(sign === "-"){
-        resultValue = firstValue - secondValue;   
-    } else if(sign === "x"){
-        resultValue = firstValue * secondValue;   
-    } else if(sign === "/"){
-        resultValue = firstValue / secondValue;   
+    switch(sign){
+        case "+":
+            resultValue = firstValue + secondValue; 
+            break;
+
+        case "-":
+            resultValue = firstValue - secondValue; 
+            break;
+        case "x":
+            resultValue = firstValue * secondValue;
+            break;
+
+        case "/":
+            resultValue = firstValue / secondValue; 
+            break;
     }
+    
     result.innerHTML = resultValue;
     firstValue = resultValue;
     secondValue = "";
