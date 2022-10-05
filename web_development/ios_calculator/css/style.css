@@ -1,0 +1,100 @@
+*{
+    font-family: Helvetica;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+
+.top_display{
+    width: 100%;
+    height: 35vh;
+    display: flex;
+    margin-left: -10%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: white;
+    font-size: 7em;
+}
+
+.bot_display{
+    width: 100%;
+    height: 65vh;
+    display: flex;
+}
+
+.operators{
+    width: 20%;
+    height: 95%;
+    margin-left: 75%;
+    display: block;
+}
+
+.divide{
+    width: 100%;
+    height: 15%;
+    background: rgb(252, 175, 34);
+    border-radius: 50px;
+    margin-bottom: 10px;
+    
+}
+
+.mult{
+    width: 100%;
+    height: 15%;
+    background: rgb(252, 175, 34);
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.subtract{
+    width: 100%;
+    height: 15%;
+    background: rgb(252, 175, 34);
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.sum{
+    width: 100%;
+    height: 15%;
+    background: rgb(252, 175, 34);
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.equals{
+    width: 100%;
+    height: 15%;
+    background: rgb(252, 175, 34);
+    border-radius: 50px;
+}
+
+.numbers{}
+
+.one{}
+
+.two{}
+
+.three{}
+
+.four{}
+
+.five{}
+
+.six{}
+
+.seven{}
+
+.eight{}
+
+.nine{}
+
+
+.clear_numbers{}
+
+.last_line{}
