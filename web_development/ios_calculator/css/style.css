@@ -1,100 +1,88 @@
 *{
-    font-family: Helvetica;
+    padding: 0;
     margin: 0;
-    overflow: hidden;
 }
 
-body {
-    width: 100%;
-    height: 100vh;
+html, body #fullheight{
+    min-height: 100% !important;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
     background: black;
 }
 
-.top_display{
-    width: 100%;
-    height: 35vh;
+.container{
+    height: 100%;
+    background: black;
+}
+
+.result{
     display: flex;
-    margin-left: -10%;
     justify-content: flex-end;
     align-items: flex-end;
     color: white;
-    font-size: 7em;
+    height: 39%;
 }
 
-.bot_display{
+.result span{
+    margin-right: 60px;
+    font-size: 210px;
+    justify-self: flex-end;
+}
+
+.buttons{
     width: 100%;
-    height: 65vh;
+    height: 60%;
+    background: black;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.item{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: white;
+    border-radius: 100%;
+    width: 210px;
+    height: 210px;
+    padding: 10px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
 }
 
-.operators{
-    width: 20%;
-    height: 95%;
-    margin-left: 75%;
-    display: block;
+.item1{
+    background: #A5A5A5;
+    border: none;
 }
 
-.divide{
-    width: 100%;
-    height: 15%;
-    background: rgb(252, 175, 34);
-    border-radius: 50px;
-    margin-bottom: 10px;
-    
+.item3{
+    background: #FF9F0A;
+    border: none;
 }
 
-.mult{
-    width: 100%;
-    height: 15%;
-    background: rgb(252, 175, 34);
-    border-radius: 50px;
-    margin-bottom: 10px;
+.mod{
+    background: #A5A5A5;
+    border: none;
+    color: black;
 }
 
-.subtract{
-    width: 100%;
-    height: 15%;
-    background: rgb(252, 175, 34);
-    border-radius: 50px;
-    margin-bottom: 10px;
+.numbers, .dot{
+    background: #343434;
+    border: none;
 }
 
-.sum{
-    width: 100%;
-    height: 15%;
-    background: rgb(252, 175, 34);
-    border-radius: 50px;
-    margin-bottom: 10px;
+.negative, .clear{
+    color: black;
+    border:none;
 }
 
-.equals{
-    width: 100%;
-    height: 15%;
-    background: rgb(252, 175, 34);
-    border-radius: 50px;
+.zero{
+    background: #343434;
+    width: 435px;
+    border-radius: 135px;
+    grid-column: span 2;
+    border: none;
 }
 
-.numbers{}
-
-.one{}
-
-.two{}
-
-.three{}
-
-.four{}
-
-.five{}
-
-.six{}
-
-.seven{}
-
-.eight{}
-
-.nine{}
-
-
-.clear_numbers{}
-
-.last_line{}
