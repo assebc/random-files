@@ -14,6 +14,7 @@ R = len(G)
 C = len(G[0])
 
 E = [[0 for _ in range(C)] for _ in range(R)]
+
 for r in range(R):
     for c in range(C):
         if G[r][c]=='S':
