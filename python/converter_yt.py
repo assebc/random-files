@@ -1,34 +1,16 @@
-# pips
-# pip install youtube-dl
-# pip install pyinstaller
+from pytube import YouTube
+from moviepy.editor import *
 
-# Imports here
-from youtube_dl import YoutubeDL
+# Enter the YouTube video URL
+url = input("Enter the YouTube video URL: ")
 
-# Get extension
-audio_downloader = YoutubeDL({"format":"bestaudio"})
+# Download the video
+video = YouTube(url).streams.filter(only_audio=True).first().download()
 
-while True:
-	
-	try:
+# Convert the video to an .mp3 file
+mp3_file = video.split(".")[0] + ".mp3"
+videoclip = AudioFileClip(video)
+videoclip.write_audiofile(mp3_file)
+videoclip.close()
 
-		# Print header
-		print(" Youtube MP3 Converter ".center(40, '=') )
-
-		# Get link
-		URL = input("Enter youtube url : ")
-
-		# Download music
-		audio_downloader.extract_info(URL)
-
-	# If an error occurs
-	except Exception:
-
-		print(" Couldn't download the audio ".center(40, '='))
-
-	# Before closing
-	finally:
-
-		print(" Success, Thank you for using me ".center(40, '=') )
-		break
-
+print("The music has been downloaded and saved as", mp3_file)
