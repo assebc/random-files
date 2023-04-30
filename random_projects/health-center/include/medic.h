@@ -11,7 +11,5 @@ void editUser(MEDIC u, char * name);
 void changeName(MEDIC u, char * name);
 void listMedic(MEDIC u);
 
-
-
 #endif
 
