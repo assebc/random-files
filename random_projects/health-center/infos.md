@@ -21,4 +21,4 @@
 - list all users sorted by medic
 
 
-use linked list
+use queue -
