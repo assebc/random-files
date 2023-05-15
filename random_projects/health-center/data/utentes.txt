@@ -1,1 +1,2 @@
-id,name,pointer_queue
+id,name,id_medic
+1,joao,0x557d0000000b

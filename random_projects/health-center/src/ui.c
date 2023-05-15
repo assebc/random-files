@@ -4,7 +4,12 @@ int id_medic = 1;
 int id_user = 1001;
 LLIST *medics, *users;
 
-void menu(){
+void menu();
+void menuUser();
+void menuMedic();
+void queries();
+
+void menu() {
     int opt = -1;
     id_medic = getID(medico);
     id_user = getID(utente);
@@ -19,15 +24,14 @@ void menu(){
     scanf("%d", &opt);
     printf("\n");
 
-    switch (opt){
+    switch (opt) {
         case 0:
             return;
-            break;
 
         case 1:
             menuUser();
             break;
-        
+
         case 2:
             menuMedic();
             break;
@@ -35,18 +39,19 @@ void menu(){
         case 3:
             queries();
             break;
-        
     }
-    
+
+    menu();
 }
 
-void menuUser(){
+void menuUser() {
     int opt = -1;
     int ids;
     int id_medics;
     LLIST tmp, tmp2;
-    USER u; MEDIC m;
-    char * name = malloc(sizeof(char)*1024);
+    USER u;
+    MEDIC m;
+    char* name = malloc(sizeof(char) * 1024);
     printf("===== MENU UTENTE =====\n");
     printf("ENTRAR NO CENTRO DE SAUDE -> 1\n");
     printf("INSERIR NOVO UTENTE -> 2\n");
@@ -59,7 +64,7 @@ void menuUser(){
     scanf("%d", &opt);
     printf("\n");
 
-    switch(opt){
+    switch (opt) {
         case 0:
             menu();
             break;
@@ -67,16 +72,16 @@ void menuUser(){
         case 1:
             printf("INSIRA SEU NUMERO DE UTENTE: ");
             scanf("%d", &ids);
-            if(ids<id_user){
+            if (ids < id_user) {
                 tmp = *users;
                 tmp2 = *medics;
-                while(tmp != NULL){
+                while (tmp != NULL) {
                     u = tmp->data;
                     if (u->id == ids) {
                         id_medics = u->id_medic;
-                        while(tmp2 != NULL){
+                        while (tmp2 != NULL) {
                             m = tmp2->data;
-                            if(m->id == id_medics){
+                            if (m->id == id_medics) {
                                 enqueue(m->q, u);
                                 break;
                             }
@@ -86,18 +91,20 @@ void menuUser(){
                     }
                     tmp = tmp->next;
                 }
-            } else perror("Invalid user id!");
+            } else {
+                perror("Invalid user id!");
+            }
 
             break;
-        
+
         case 2:
             printf("\nINSIRA SEU NOME\n");
             scanf("%s", name);
             printf("\nINSIRA ID DO SEU MEDICO\n");
             scanf("%d", &id_medics);
             printf("\n");
-            u = createUser(id_user++,name,id_medics);
-            addToFile(utente,u);
+            u = createUser(id_user++, name, id_medics);
+            addToFile(utente, u);
             users = readFile(utente);
             break;
 
@@ -119,7 +126,7 @@ void menuUser(){
             scanf("%d", &ids);
             printf("\n");
             tmp = *users;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 u = tmp->data;
                 if (u->id == ids) {
                     listUser(u);
@@ -136,24 +143,23 @@ void menuUser(){
             removeFromFile(utente, ids);
             users = readFile(utente);
             break;
-        
+
         case 6:
             tmp = *users;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 u = tmp->data;
                 listUser(u);
+                tmp = tmp->next;
             }
             break;
     }
-    free(name);
-    free(u);
-    free(tmp);
     menuUser();
 }
 
-void menuMedic(){
+void menuMedic() {
     int opt = -1, ids;
-    char * name = malloc(sizeof(char)*1024);
+    char* name = malloc(sizeof(char) * 1024);
+    QUEUE q = malloc(sizeof(struct queue) * MAX_QUEUE_SIZE);
     LLIST tmp;
     MEDIC m;
     printf("===== MENU MEDICO =====\n");
@@ -168,7 +174,7 @@ void menuMedic(){
     scanf("%d", &opt);
     printf("\n");
 
-    switch(opt){
+    switch (opt) {
         case 0:
             menu();
             break;
@@ -178,22 +184,23 @@ void menuMedic(){
             scanf("%d", &ids);
             printf("\n");
             tmp = *medics;
-            while(tmp != NULL){
-                m = (MEDIC)tmp->data;
-                if(m->id == ids){
+            while (tmp != NULL) {
+                m = tmp->data;
+                if (m->id == ids) {
                     removeFromQueue(m);
-                    editFile(medico,m);
+                    editFile(medico, m);
                     medics = readFile(medico);
                     break;
                 }
                 tmp = tmp->next;
             }
             break;
-        
+
         case 2:
             printf("\nINSIRA SEU NOME\n");
             scanf("%s", name);
-            m = createMedic(id_medic++, name, malloc(sizeof(struct queue) * MAX_QUEUE_SIZE));
+            initQueue(q);
+            m = createMedic(id_medic++, name, q);
             addToFile(medico, m);
             medics = readFile(medico);
             break;
@@ -204,7 +211,7 @@ void menuMedic(){
             printf("\nALTERE SEU NOME\n");
             scanf("%s", name);
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
                 if (m->id == ids) {
                     break;
@@ -217,10 +224,11 @@ void menuMedic(){
             break;
 
         case 4:
-            printf("\nINSIRA SEU NUMERO DE MEDICO\n");
+            printf("\nINSIRA ID DO SEU MEDICO\n");
             scanf("%d", &ids);
-            tmp = *medics;
-            while(tmp != NULL){
+            printf("\n");
+            tmp = *users;
+            while (tmp != NULL) {
                 m = tmp->data;
                 if (m->id == ids) {
                     listMedic(m);
@@ -229,7 +237,7 @@ void menuMedic(){
                 tmp = tmp->next;
             }
             break;
-            
+
         case 5:
             printf("\nINSIRA SEU NUMERO DE MEDICO\n");
             scanf("%d", &ids);
@@ -240,22 +248,21 @@ void menuMedic(){
 
         case 6:
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
                 listMedic(m);
+                tmp = tmp->next;
             }
             break;
-
     }
-    free(name);
-    free(tmp);
-    free(m);
     menuMedic();
 }
 
-void queries(){
+void queries() {
     int opt = -1, ids, len = 0, id_meds = 1;
-    MEDIC m;
+    QUEUE qs = malloc(sizeof(struct queue));
+    initQueue(qs);
+    MEDIC m = createMedic(1,"joao",qs);
     LLIST tmp;
     printf("===== OUTROS =====\n");
     printf("LISTAR UTENTES EM ESPERA -> 1\n");
@@ -267,7 +274,7 @@ void queries(){
     scanf("%d", &opt);
     printf("\n");
 
-    switch(opt){
+    switch (opt) {
         case 0:
             menu();
             break;
@@ -277,25 +284,25 @@ void queries(){
             scanf("%d", &ids);
             printf("\n");
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
-                if(m->id == ids){
+                if (m->id == ids) {
                     printQueue(m->q);
                     break;
                 }
                 tmp = tmp->next;
             }
             break;
-        
+
         case 2:
             printf("\nINSIRA NUMERO DE MEDICO\n");
             scanf("%d", &ids);
             printf("\n");
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
-                if(m->id == ids){
-                    size(m->q);
+                if (m->id == ids) {
+                    printf("%d\n", size(m->q));
                     break;
                 }
                 tmp = tmp->next;
@@ -304,10 +311,10 @@ void queries(){
 
         case 3:
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
                 int len_tmp = size(m->q);
-                if(len < len_tmp){
+                if (len < len_tmp) {
                     len = len_tmp;
                     id_meds = m->id;
                 }
@@ -318,15 +325,13 @@ void queries(){
 
         case 4:
             tmp = *medics;
-            while(tmp != NULL){
+            while (tmp != NULL) {
                 m = tmp->data;
                 printQueue(m->q);
                 tmp = tmp->next;
             }
             break;
-
     }
-    free(tmp);
-    free(m);
+
     queries();
 }

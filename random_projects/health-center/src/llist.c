@@ -1,6 +1,6 @@
 #include "../include/llist.h"
 
-void insert(LLIST *head, void * data) {
+void insert(LLIST* head, void* data) {
     LLIST new_node = (LLIST) malloc(sizeof(struct node));
     new_node->data = data;
     new_node->next = NULL;
@@ -21,7 +21,7 @@ void insert(LLIST *head, void * data) {
 void print_list(LLIST head, int opt) {
     LLIST current = head;
     while (current != NULL) {
-        switch(opt){
+        switch (opt) {
             case 1:
                 listUser((USER) current->data);
                 break;

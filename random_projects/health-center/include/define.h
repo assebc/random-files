@@ -5,6 +5,6 @@
 #define MAX_QUEUE_SIZE 100
 #define utente "data/utentes.txt"
 #define medico "data/medicos.txt"
-#define temp "data/temp.txt"
+#define temp_file "data/temp.txt"
 
 #endif

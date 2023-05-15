@@ -3,10 +3,11 @@
 void initQueue(QUEUE q) {
     q->front = -1;
     q->rear = -1;
+    q->arr = malloc(sizeof(struct queue));
 }
 
 int isEmpty(QUEUE q) {
-    return q->front == -1 && q->rear == -1;
+    return (q->front == -1 && q->rear == -1);
 }
 
 int isFull(QUEUE q) {
@@ -45,7 +46,9 @@ USER getFront(QUEUE q) {
 }
 
 void printQueue(QUEUE q) {
-    if (isEmpty(q)) {
+    printf("%d\n", q->front);
+    printf("%d\n", q->rear);
+    if (isEmpty(q) || q == NULL) {
         printf("Queue is empty\n");
         return;
     }
@@ -56,6 +59,6 @@ void printQueue(QUEUE q) {
     printf("\n");
 }
 
-int size(QUEUE q){
-    return q->rear-q->front;
+int size(QUEUE q) {
+   return q->rear - q->front;
 }

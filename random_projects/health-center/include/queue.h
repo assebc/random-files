@@ -2,12 +2,11 @@
 #define QUEUE_H
 
 #include <stdio.h>
-
 #include "define.h"
-#include "user.h"
+#include "user.h"   
 
 typedef struct queue {
-    USER arr[MAX_QUEUE_SIZE];
+    USER* arr;
     int front;
     int rear;
 } * QUEUE;
