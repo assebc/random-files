@@ -16,7 +16,7 @@ void editarMedico(Medico* listaMedicos);
 void removerMedico(Medico** listaMedicos, int codigoMedico);
 void listarMedicos(Medico* listaMedicos);
 void guardarMedicos(Medico* listaMedicos);
-void importarMedicos(Medico** listaMedicos, int* codigoMedico);
+void importarMedicos(Medico** listaMedicos);
 void inserirFilaEspera(Medico* listaMedicos, int codigoMedico, Utente t);
 void proximoFila(Medico * listaMedicos, int codigoMedico);
 int tamanhoFila(Medico * listaMedicos, int codigoMedico);

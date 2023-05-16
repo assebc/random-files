@@ -10,7 +10,8 @@ Medico* listaMedicos = NULL; // pointer to the first element of the list of doct
 void inserirMedico(Medico** listaMedicos, int* codigoMedico) {
     char nome[100];
     printf("Digite o nome do medico: ");
-    scanf("%s", nome);
+    getchar();
+    fgets(nome, sizeof(nome), stdin);
     
     Medico* novoMedico = malloc(sizeof(Medico)); // allocate memory dynamically
     
@@ -30,6 +31,7 @@ void inserirMedico(Medico** listaMedicos, int* codigoMedico) {
         p->prox = novoMedico;
     }
     printf("\nMedico inserido com sucesso!\n");
+    printf("Medico com ID %d\n", novoMedico->codigoMedico);
 }
 
 // Consult a doctor by code
@@ -114,7 +116,7 @@ void listarMedicos(Medico* listaMedicos) {
 
 // Save the doctors' information to a .txt file
 void guardarMedicos(Medico* listaMedicos) {
-    FILE* arquivo = fopen("medicos.txt", "w");
+    FILE* arquivo = fopen("medicos.txt", "a");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo medicos.txt!\n");
         return;
@@ -122,7 +124,8 @@ void guardarMedicos(Medico* listaMedicos) {
     
     Medico* p = listaMedicos;
     while (p != NULL) {
-        fprintf(arquivo, "%d %s\n", p->codigoMedico, p->nome);
+        p->nome[strcspn(p->nome, "\n")] = '\0';
+        fprintf(arquivo, "%d,%s,%p\n", p->codigoMedico, p->nome,&p->fila_espera);
         p = p->prox;
     }
     
@@ -131,27 +134,29 @@ void guardarMedicos(Medico* listaMedicos) {
 }
 
 // Import the doctors' information from the txt file
-void importarMedicos(Medico** listaMedicos, int* codigoMedico) {
-
+void importarMedicos(Medico** listaMedicos) {
     FILE* arquivo = fopen("medicos.txt", "r");
-    
+
     if (arquivo == NULL) {
         printf("Nao foi possivel abrir o arquivo medicos.txt!\n");
         return;
     }
-    
+
     while (!feof(arquivo)) {
+        int codigoMedico;
         char nome[100];
-        
-        if (fscanf(arquivo, "%s %d\n", nome, codigoMedico) != 2) {
+        unsigned long int fila_espera_pointer;
+
+        if (fscanf(arquivo, "%d,%[^,],%lu\n", &codigoMedico, nome, &fila_espera_pointer) != 3) {
             break;
         }
-        
+
         Medico* novoMedico = malloc(sizeof(Medico)); // allocate memory dynamically
-        novoMedico->codigoMedico = ++(*codigoMedico); // increment a code for each new doctor added
+        novoMedico->codigoMedico = codigoMedico;
         strcpy(novoMedico->nome, nome);
         novoMedico->prox = NULL;
-        
+        novoMedico->fila_espera = (Utente*)fila_espera_pointer;
+
         if (*listaMedicos == NULL) {
             *listaMedicos = novoMedico;
         } else {
@@ -162,10 +167,11 @@ void importarMedicos(Medico** listaMedicos, int* codigoMedico) {
             p->prox = novoMedico;
         }
     }
-    
+
     fclose(arquivo);
     printf("\nInformacoes dos medicos carregadas do arquivo com sucesso!\n");
 }
+
 
 void inserirFilaEspera(Medico* listaMedicos, int codigoMedico, Utente t) {
     while (listaMedicos != NULL) {

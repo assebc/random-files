@@ -1,1 +1,4 @@
-1 cao 1
+1,Joãozinho Danúbio,0
+2,Jorge Lopes,1
+3,Artur Jovem,0
+4,macaco,1

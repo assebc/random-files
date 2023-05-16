@@ -9,8 +9,12 @@ int main() {
     int opcao;
 	Medico* listaMedicos = NULL;
     Utente* listaUtentes = NULL;
-    int codigoMedico = 0, codMedico = 0; // inicializa o contador de codigos de utentes
-    int codigoUtente=0, codUtente  = 0; //// inicializa o contador de codigos de utentes
+    importarUtentes(&listaUtentes);
+    importarMedicos(&listaMedicos);
+    int codigoMedico = tamanho(listaUtentes);
+    int codigoUtente = tamanhoFila(listaMedicos, 10000);
+    int codMedico = 0; // inicializa o contador de codigos de utentes
+    int codUtente  = 0; //// inicializa o contador de codigos de utentes
     int len = 0, size = 0;
     Utente *t;
     while (1) {
@@ -43,7 +47,7 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            inserirUtente(&listaUtentes, &codigoUtente);
+                            inserirUtente(&listaUtentes, &codigoUtente, &codigoMedico);
                             break;
                         case 2:
                             editarUtente(listaUtentes);
@@ -167,9 +171,9 @@ int main() {
                             }
                             printf("Maior fila tem %d utentes\n", len);
                             break;
-                        case 6: // nao é bem isto mas pronto
-                            while(listaMedicos!=NULL){
-                                listarUtentes(listaMedicos->fila_espera);
+                        case 6:
+                            while(listaMedicos->prox!=NULL){
+                                listarUtentes2(&listaUtentes, listaMedicos->codigoMedico);
                                 listaMedicos = listaMedicos->prox;
                             }
                             break;
@@ -182,6 +186,7 @@ int main() {
                         default:
                             printf("Opcao invalida. Por favor, tente novamente.\n");
                     }
+                    importarMedicos(&listaMedicos);
                 }
                 break;
             case 4:
@@ -203,10 +208,10 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            importarUtentes(&listaUtentes, &codigoUtente);
+                            importarUtentes(&listaUtentes);
                             break;
                         case 2:
-                            importarMedicos(&listaMedicos, &codigoMedico);
+                            importarMedicos(&listaMedicos);
                             break;
                         case 3:
                             // Importar dados de consultas

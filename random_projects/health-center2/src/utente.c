@@ -7,13 +7,18 @@
 Utente *listaUtentes = NULL;
 
 // Inserir um novo utente no final da lista ligada de utentes
-void inserirUtente(Utente **listaUtentes, int *codigoUtente) {
+void inserirUtente(Utente **listaUtentes, int *codigoUtente, int*codigoMedicos) {
     int codigoMedico = 0;
     char nome[100];
     printf("Digite o nome do utente: ");
-    scanf("%s", nome);
-    printf("\nDigite o codigo do medico: ");
+    getchar();
+    fgets(nome, sizeof(nome), stdin);
+    printf("Digite o codigo do medico: ");
     scanf("%d", &codigoMedico);
+    while(codigoMedico>*codigoMedicos){
+        printf("\n Codigo do medico inválido, tente novamente: ");
+        scanf("%d", &codigoMedico);
+    }
 
     Utente *novoUtente = malloc(sizeof(Utente)); // aloca memoria dinamicamente
     novoUtente->codigoUtente = ++(*codigoUtente); // incrementa um codigo para cada novo utente adicionado
@@ -31,6 +36,8 @@ void inserirUtente(Utente **listaUtentes, int *codigoUtente) {
         p->prox = novoUtente;
     }
     printf("\nUtente inserido com sucesso!\n");
+    printf("Utente com ID %d\n", novoUtente->codigoUtente);
+
 }
 
 // Consultar um utente por codigo
@@ -145,7 +152,7 @@ void listarUtentes(Utente *listaUtentes) {
 
 // Guardar as informacoes dos utentes num arquivo
 void guardarUtentes(Utente *listaUtentes) {
-    FILE *arquivo = fopen("utentes.txt", "w+");
+    FILE *arquivo = fopen("utentes.txt", "a");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo utentes.txt!\n");
         return;
@@ -153,7 +160,8 @@ void guardarUtentes(Utente *listaUtentes) {
 
     Utente *p = listaUtentes;
     while (p != NULL) {
-        fprintf(arquivo, "%d %s %d\n", p->codigoUtente, p->nome, p->codigoMedico);
+        p->nome[strcspn(p->nome, "\n")] = '\0';
+        fprintf(arquivo, "%d,%s,%d\n", p->codigoUtente, p->nome, p->codigoMedico);
         p = p->prox;
     }
 
@@ -162,8 +170,8 @@ void guardarUtentes(Utente *listaUtentes) {
 }
 
 // Importar as informacoes dos utentes do arquivo txt
-void importarUtentes(Utente **listaUtentes, int *codigoUtente) {
-    FILE *arquivo = fopen("utentes.txt", "r");
+void importarUtentes(Utente** listaUtentes) {
+    FILE* arquivo = fopen("utentes.txt", "r");
 
     if (arquivo == NULL) {
         printf("Nao foi possivel abrir o arquivo utentes.txt!\n");
@@ -171,15 +179,15 @@ void importarUtentes(Utente **listaUtentes, int *codigoUtente) {
     }
 
     while (!feof(arquivo)) {
+        int codigoUtente, codigoMedico;
         char nome[100];
-        int codigoMedico;
 
-        if (fscanf(arquivo, "%s %d\n", nome, &codigoMedico) != 2) {
+        if (fscanf(arquivo, "%d,%[^,],%d\n", &codigoUtente, nome, &codigoMedico) != 3) {
             break;
         }
 
-        Utente *novoUtente = malloc(sizeof(Utente)); // aloca memoria dinamicamente
-        novoUtente->codigoUtente = ++(*codigoUtente); // incrementa um codigo para cada novo utente adicionado
+        Utente* novoUtente = malloc(sizeof(Utente)); // allocate memory dynamically
+        novoUtente->codigoUtente = codigoUtente;
         strcpy(novoUtente->nome, nome);
         novoUtente->codigoMedico = codigoMedico;
         novoUtente->prox = NULL;
@@ -187,7 +195,7 @@ void importarUtentes(Utente **listaUtentes, int *codigoUtente) {
         if (*listaUtentes == NULL) {
             *listaUtentes = novoUtente;
         } else {
-            Utente *p = *listaUtentes;
+            Utente* p = *listaUtentes;
             while (p->prox != NULL) {
                 p = p->prox;
             }
@@ -196,5 +204,24 @@ void importarUtentes(Utente **listaUtentes, int *codigoUtente) {
     }
 
     fclose(arquivo);
-    printf("Informacoes dos utentes carregadas do arquivo com sucesso!\n");
+    printf("\nInformacoes dos utentes carregadas do arquivo com sucesso!\n");
+}
+
+int tamanho(Utente * listaUtentes){
+    Utente * tmp = listaUtentes;
+    int res = 0;
+    while(tmp!=NULL){res++; tmp = tmp->prox; } 
+    return res;
+}
+
+void listarUtentes2(Utente** listaUtentes, int codMedico){
+    Utente * p = *listaUtentes;
+    while (p != NULL) {
+        if(p->codigoMedico == codMedico){
+            printf("Codigo: %d\n", p->codigoUtente);
+            printf("Nome: %s\n", p->nome);
+            printf("Codigo do medico: %d\n\n", p->codigoMedico);
+        }
+        p = p->prox;
+    }
 }
