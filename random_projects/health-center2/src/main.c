@@ -197,11 +197,9 @@ int main() {
                     printf("Selecione uma opcao:\n\n");
                     printf("1. Importar dados de utentes\n");
                     printf("2. Importar dados de medicos\n");
-                    printf("3. Importar dados de consultas\n\n");
-                    printf("4. Exportar dados de utentes\n");
-                    printf("5. Exportar dados de medicos\n");
-                    printf("6. Exportar dados de consultas\n\n");
-                    printf("7. Voltar ao Menu Principal\n");                   
+                    printf("3. Exportar dados de utentes\n");
+                    printf("4. Exportar dados de medicos\n");
+                    printf("5. Voltar ao Menu Principal\n");                   
                     printf("0. Sair\n\n");
                     printf("\n	Opcao: ");
                     scanf("%d", &opcao);
@@ -214,21 +212,18 @@ int main() {
                             importarMedicos(&listaMedicos);
                             break;
                         case 3:
-                            // Importar dados de consultas
-                            break;
-                        case 4:
                             guardarUtentes(listaUtentes);
                             break;
-                        case 5:
+                        case 4:
                         	guardarMedicos(listaMedicos);
                             break;
-                        case 6:
-                            // Exportar dados de consultas
+                        case 5:
                             break;
-                        case 7:
+                        case 6:
                             goto menu_principal;
+                            break;
                         case 0:
-			                printf("	Aplicacao Terminada!\n");
+			                printf("Aplicacao Terminada!\n");
 			                exit(0);
 			                break;
                         default:
