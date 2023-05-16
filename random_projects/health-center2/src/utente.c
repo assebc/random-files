@@ -7,7 +7,7 @@
 Utente *listaUtentes = NULL;
 
 // Inserir um novo utente no final da lista ligada de utentes
-void inserirUtente(Utente **listaUtentes, int *codigoUtente, int*codigoMedicos) {
+void inserirUtente(Utente **listaUtentes, int codigoUtente, int codigoMedicos) {
     int codigoMedico = 0;
     char nome[100];
     printf("Digite o nome do utente: ");
@@ -15,13 +15,13 @@ void inserirUtente(Utente **listaUtentes, int *codigoUtente, int*codigoMedicos) 
     fgets(nome, sizeof(nome), stdin);
     printf("Digite o codigo do medico: ");
     scanf("%d", &codigoMedico);
-    while(codigoMedico>*codigoMedicos){
+    while(codigoMedico>codigoMedicos){
         printf("\n Codigo do medico inválido, tente novamente: ");
         scanf("%d", &codigoMedico);
     }
 
     Utente *novoUtente = malloc(sizeof(Utente)); // aloca memoria dinamicamente
-    novoUtente->codigoUtente = ++(*codigoUtente); // incrementa um codigo para cada novo utente adicionado
+    novoUtente->codigoUtente = ++(codigoUtente); // incrementa um codigo para cada novo utente adicionado
     strcpy(novoUtente->nome, nome);
     novoUtente->codigoMedico = codigoMedico;
     novoUtente->prox = NULL;
@@ -152,7 +152,7 @@ void listarUtentes(Utente *listaUtentes) {
 
 // Guardar as informacoes dos utentes num arquivo
 void guardarUtentes(Utente *listaUtentes) {
-    FILE *arquivo = fopen("utentes.txt", "a");
+    FILE *arquivo = fopen("utentes.txt", "w+");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo utentes.txt!\n");
         return;
@@ -170,12 +170,12 @@ void guardarUtentes(Utente *listaUtentes) {
 }
 
 // Importar as informacoes dos utentes do arquivo txt
-void importarUtentes(Utente** listaUtentes) {
+int importarUtentes(Utente** listaUtentes) {
     FILE* arquivo = fopen("utentes.txt", "r");
-
+    int maxCode = 0;
     if (arquivo == NULL) {
         printf("Nao foi possivel abrir o arquivo utentes.txt!\n");
-        return;
+        return 0;
     }
 
     while (!feof(arquivo)) {
@@ -191,7 +191,7 @@ void importarUtentes(Utente** listaUtentes) {
         strcpy(novoUtente->nome, nome);
         novoUtente->codigoMedico = codigoMedico;
         novoUtente->prox = NULL;
-
+        if(maxCode<novoUtente->codigoUtente) maxCode = novoUtente->codigoUtente;
         if (*listaUtentes == NULL) {
             *listaUtentes = novoUtente;
         } else {
@@ -205,6 +205,7 @@ void importarUtentes(Utente** listaUtentes) {
 
     fclose(arquivo);
     printf("\nInformacoes dos utentes carregadas do arquivo com sucesso!\n");
+    return maxCode;
 }
 
 int tamanho(Utente * listaUtentes){

@@ -9,10 +9,8 @@ int main() {
     int opcao;
 	Medico* listaMedicos = NULL;
     Utente* listaUtentes = NULL;
-    importarUtentes(&listaUtentes);
-    importarMedicos(&listaMedicos);
-    int codigoMedico = tamanho(listaUtentes);
-    int codigoUtente = tamanhoFila(listaMedicos, 10000);
+    int codigoUtente = importarUtentes(&listaUtentes);
+    int codigoMedico = importarMedicos(&listaMedicos);
     int codMedico = 0; // inicializa o contador de codigos de utentes
     int codUtente  = 0; //// inicializa o contador de codigos de utentes
     int len = 0, size = 0;
@@ -24,7 +22,7 @@ int main() {
         printf("1. Gerir utentes\n");
         printf("2. Gerir medicos\n");
         printf("3. Gerir consultas\n");
-        printf("4. Importar/Exportar dados\n\n");
+        printf("4. Importar/Exportar dados\n");
         printf("0. Sair\n\n");
         printf("Opcao:");
         scanf("%d", &opcao);
@@ -39,7 +37,7 @@ int main() {
                     printf("2. Editar Utente\n");
                     printf("3. Consultar Utente\n");
                     printf("4. Remover Utente\n");
-                    printf("5. Listar Utentes\n\n");
+                    printf("5. Listar Utentes\n");
                     printf("6. Voltar ao Menu Principal\n");
                     printf("0. Sair\n\n");
                     printf("Opcao: ");
@@ -47,7 +45,7 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            inserirUtente(&listaUtentes, &codigoUtente, &codigoMedico);
+                            inserirUtente(&listaUtentes, codigoUtente, codigoMedico);
                             break;
                         case 2:
                             editarUtente(listaUtentes);
@@ -94,7 +92,7 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            inserirMedico(&listaMedicos, &codigoMedico);
+                            inserirMedico(&listaMedicos, codigoMedico);
                             break;
                         case 2:
                             editarMedico(listaMedicos);
@@ -134,7 +132,7 @@ int main() {
                     printf("3. Listar Utentes de um Medico\n");
                     printf("4. Numero de Utentes em Espera de um Medico\n");
                     printf("5. Medico com Mais Utentes em Espera\n");
-                    printf("6. Listar Todos os Utentes Ordenados por Medico\n\n");
+                    printf("6. Listar Todos os Utentes Ordenados por Medico\n");
                     printf("7. Voltar ao Menu Principal\n");                    
                     printf("0. Sair\n\n");
                     printf("\n	Opcao: ");
@@ -218,8 +216,6 @@ int main() {
                         	guardarMedicos(listaMedicos);
                             break;
                         case 5:
-                            break;
-                        case 6:
                             goto menu_principal;
                             break;
                         case 0:

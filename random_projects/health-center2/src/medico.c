@@ -7,15 +7,14 @@
 Medico* listaMedicos = NULL; // pointer to the first element of the list of doctors
 
 // Insert a new doctor at the end of the linked list of doctors
-void inserirMedico(Medico** listaMedicos, int* codigoMedico) {
+void inserirMedico(Medico** listaMedicos, int codigoMedico) {
     char nome[100];
     printf("Digite o nome do medico: ");
     getchar();
     fgets(nome, sizeof(nome), stdin);
     
     Medico* novoMedico = malloc(sizeof(Medico)); // allocate memory dynamically
-    
-    novoMedico->codigoMedico = ++(*codigoMedico); // increment a code for each new doctor added
+    novoMedico->codigoMedico = ++(codigoMedico); // increment a code for each new doctor added
 
     strcpy(novoMedico->nome, nome);
     novoMedico->prox = NULL;
@@ -116,7 +115,7 @@ void listarMedicos(Medico* listaMedicos) {
 
 // Save the doctors' information to a .txt file
 void guardarMedicos(Medico* listaMedicos) {
-    FILE* arquivo = fopen("medicos.txt", "a");
+    FILE* arquivo = fopen("medicos.txt", "w+");
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo medicos.txt!\n");
         return;
@@ -134,12 +133,12 @@ void guardarMedicos(Medico* listaMedicos) {
 }
 
 // Import the doctors' information from the txt file
-void importarMedicos(Medico** listaMedicos) {
+int importarMedicos(Medico** listaMedicos) {
     FILE* arquivo = fopen("medicos.txt", "r");
-
+    int maxCode = 0;
     if (arquivo == NULL) {
         printf("Nao foi possivel abrir o arquivo medicos.txt!\n");
-        return;
+        return 0;
     }
 
     while (!feof(arquivo)) {
@@ -156,7 +155,7 @@ void importarMedicos(Medico** listaMedicos) {
         strcpy(novoMedico->nome, nome);
         novoMedico->prox = NULL;
         novoMedico->fila_espera = (Utente*)fila_espera_pointer;
-
+        if(maxCode<codigoMedico) maxCode = codigoMedico;
         if (*listaMedicos == NULL) {
             *listaMedicos = novoMedico;
         } else {
@@ -170,6 +169,7 @@ void importarMedicos(Medico** listaMedicos) {
 
     fclose(arquivo);
     printf("\nInformacoes dos medicos carregadas do arquivo com sucesso!\n");
+    return maxCode;
 }
 
 
