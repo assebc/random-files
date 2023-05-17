@@ -7,7 +7,7 @@
 Medico* listaMedicos = NULL; // pointer to the first element of the list of doctors
 
 // Insert a new doctor at the end of the linked list of doctors
-void inserirMedico(Medico** listaMedicos, int codigoMedico) {
+int inserirMedico(Medico** listaMedicos, int codigoMedico) {
     char nome[100];
     printf("Digite o nome do medico: ");
     getchar();
@@ -31,6 +31,7 @@ void inserirMedico(Medico** listaMedicos, int codigoMedico) {
     }
     printf("\nMedico inserido com sucesso!\n");
     printf("Medico com ID %d\n", novoMedico->codigoMedico);
+    return codigoMedico;
 }
 
 // Consult a doctor by code
@@ -140,22 +141,42 @@ int importarMedicos(Medico** listaMedicos) {
         printf("Nao foi possivel abrir o arquivo medicos.txt!\n");
         return 0;
     }
-
+    
     while (!feof(arquivo)) {
         int codigoMedico;
         char nome[100];
-        unsigned long int fila_espera_pointer;
-
-        if (fscanf(arquivo, "%d,%[^,],%lu\n", &codigoMedico, nome, &fila_espera_pointer) != 3) {
+        void* fila_espera_pointer;
+        
+        if (fscanf(arquivo, "%d,%99[^,],%p\n", &codigoMedico, nome, &fila_espera_pointer) != 3) {
             break;
         }
-
-        Medico* novoMedico = malloc(sizeof(Medico)); // allocate memory dynamically
+        
+        Medico* novoMedico = malloc(sizeof(Medico)); // allocate memory for Medico
+        
         novoMedico->codigoMedico = codigoMedico;
         strcpy(novoMedico->nome, nome);
         novoMedico->prox = NULL;
-        novoMedico->fila_espera = (Utente*)fila_espera_pointer;
-        if(maxCode<codigoMedico) maxCode = codigoMedico;
+        
+        Utente* fila_espera = (Utente*)fila_espera_pointer;
+        novoMedico->fila_espera = NULL; // initialize fila_espera pointer
+        
+        if (fila_espera != NULL) {
+            Utente* novoUtente = malloc(sizeof(Utente)); // allocate memory for Utente
+            
+            if (novoUtente == NULL) {
+                printf("Erro ao alocar memoria para Utente.\n");
+                // Handle memory allocation error (e.g., clean up memory and return an appropriate value)
+            }
+            
+            // memcpy(novoUtente, fila_espera, sizeof(struct Utente)); // copy Utente data
+            
+            novoMedico->fila_espera = novoUtente;
+        }
+        
+        if (maxCode < novoMedico->codigoMedico) {
+            maxCode = novoMedico->codigoMedico;
+        }
+        
         if (*listaMedicos == NULL) {
             *listaMedicos = novoMedico;
         } else {
@@ -166,29 +187,37 @@ int importarMedicos(Medico** listaMedicos) {
             p->prox = novoMedico;
         }
     }
-
+    
     fclose(arquivo);
     printf("\nInformacoes dos medicos carregadas do arquivo com sucesso!\n");
     return maxCode;
 }
 
-
-void inserirFilaEspera(Medico* listaMedicos, int codigoMedico, Utente t) {
-    while (listaMedicos != NULL) {
-        if (listaMedicos->codigoMedico == codigoMedico) {
-            Utente* fila = listaMedicos->fila_espera;
+Medico* inserirFilaEspera(Medico* listaMedicos, int codigoMedico, Utente t) {
+    Medico* current = listaMedicos;
+    
+    while (current != NULL) {
+        if (current->codigoMedico == codigoMedico) {
+            Utente* novoUtente = malloc(sizeof(Utente));
+            *novoUtente = t;
+            novoUtente->prox = NULL;
+            
+            Utente* fila = current->fila_espera->prox;
+            
             if (fila == NULL) {
-                listaMedicos->fila_espera = &t;
+                current->fila_espera = novoUtente;
             } else {
                 while (fila->prox != NULL) {
                     fila = fila->prox;
                 }
-                fila->prox = &t;
+                fila->prox = novoUtente;
             }
-            return;
+            return listaMedicos;
         }
-        listaMedicos = listaMedicos->prox;
+        current = current->prox;
     }
+    
+    return listaMedicos;
 }
 
 void proximoFila(Medico* listaMedicos, int codigoMedico) {
@@ -202,6 +231,7 @@ void proximoFila(Medico* listaMedicos, int codigoMedico) {
                 printf("Fila de espera vazia para o medico com codigo %d.\n", codigoMedico);
             }
             return;
+
         }
         listaMedicos = listaMedicos->prox;
     }
@@ -211,7 +241,7 @@ int tamanhoFila(Medico* listaMedicos, int codigoMedico) {
     int res = 0;
     while (listaMedicos != NULL) {
         if (listaMedicos->codigoMedico == codigoMedico) {
-            Utente* fila = listaMedicos->fila_espera;
+            Utente* fila = listaMedicos->fila_espera->prox;
             while (fila) {
                 res++;
                 fila = fila->prox;

@@ -13,8 +13,9 @@ int main() {
     int codigoMedico = importarMedicos(&listaMedicos);
     int codMedico = 0; // inicializa o contador de codigos de utentes
     int codUtente  = 0; //// inicializa o contador de codigos de utentes
-    int len = 0, size = 0;
+    int len = 0, size = 0, idm;
     Utente *t;
+    Medico * m;
     while (1) {
     	menu_principal:
     	printf("*** Centro de Saude ***\n\n");
@@ -45,7 +46,7 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            inserirUtente(&listaUtentes, codigoUtente, codigoMedico);
+                            codigoUtente = inserirUtente(&listaUtentes, codigoUtente, codigoMedico);
                             break;
                         case 2:
                             editarUtente(listaUtentes);
@@ -92,7 +93,7 @@ int main() {
 
                     switch (opcao) {
                         case 1:
-                            inserirMedico(&listaMedicos, codigoMedico);
+                            codigoMedico = inserirMedico(&listaMedicos, codigoMedico);
                             break;
                         case 2:
                             editarMedico(listaMedicos);
@@ -144,7 +145,7 @@ int main() {
                             printf("Insira o codigo do utente que deseja registar a entrada: ");
                             scanf("%d", &codUtente);
                             t = consultarUtente(listaUtentes,codUtente);
-                            inserirFilaEspera(listaMedicos,t->codigoMedico,*t);
+                            listaMedicos = inserirFilaEspera(listaMedicos,t->codigoMedico,*t);
                             break;
                         case 2:
                             printf("Insira o codigo do medico: ");
@@ -154,7 +155,8 @@ int main() {
                         case 3:
                             printf("Insira o codigo do medico que deseja consultar: ");
                             scanf("%d", &codMedico);
-                            listarUtentes(consultarMedico(listaMedicos, codMedico)->fila_espera);
+                            m = consultarMedico(listaMedicos, codMedico);
+                            listarUtentes(m->fila_espera);
                             break;
                         case 4:
                             printf("Insira o codigo do medico que deseja consultar: ");
@@ -164,13 +166,16 @@ int main() {
                         case 5:
                             while(listaMedicos->prox!=NULL){
                                 size = tamanhoFila(listaMedicos, listaMedicos->codigoMedico);
-                                if(len < size) len = size;
+                                if(len < size) {
+                                    len = size;
+                                    idm = listaMedicos->codigoMedico;
+                                }
                                 listaMedicos = listaMedicos->prox;
                             }
-                            printf("Maior fila tem %d utentes\n", len);
+                            printf("Maior fila tem %d utentes e é do médico %d\n", len,idm);
                             break;
                         case 6:
-                            while(listaMedicos->prox!=NULL){
+                            for(int i = 1;i<=codigoMedico;i++){
                                 listarUtentes2(&listaUtentes, listaMedicos->codigoMedico);
                                 listaMedicos = listaMedicos->prox;
                             }

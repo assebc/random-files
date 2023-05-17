@@ -7,7 +7,7 @@
 Utente *listaUtentes = NULL;
 
 // Inserir um novo utente no final da lista ligada de utentes
-void inserirUtente(Utente **listaUtentes, int codigoUtente, int codigoMedicos) {
+int inserirUtente(Utente **listaUtentes, int codigoUtente, int codigoMedicos) {
     int codigoMedico = 0;
     char nome[100];
     printf("Digite o nome do utente: ");
@@ -37,7 +37,7 @@ void inserirUtente(Utente **listaUtentes, int codigoUtente, int codigoMedicos) {
     }
     printf("\nUtente inserido com sucesso!\n");
     printf("Utente com ID %d\n", novoUtente->codigoUtente);
-
+    return codigoUtente;
 }
 
 // Consultar um utente por codigo

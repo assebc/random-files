@@ -8,7 +8,7 @@ typedef struct Utente {
     struct Utente * prox;
 } Utente;
 
-void inserirUtente(Utente** listaUtentes, int codigoUtente, int codigoMedicos);
+int inserirUtente(Utente** listaUtentes, int codigoUtente, int codigoMedicos);
 Utente* consultarUtente(Utente* listaUtentes, int codigoUtente);
 void editarUtente(Utente* listaUtentes);
 void removerUtente(Utente** listaUtentes, int codigoUtente);
