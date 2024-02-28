@@ -1,0 +1,14 @@
+import json
+
+json_data = [] # insert data here
+
+headers = list(json_data[0].keys())
+values = [[item[key] for key in headers] for item in json_data]
+
+with open("output.json", "w") as f:
+    f.write('[\n')
+    f.write('    ' + json.dumps(headers) + ',\n')
+    for value in values:
+        if value != values[-1]: f.write('    ' + json.dumps(value) + ',\n')
+        else: f.write('    ' + json.dumps(value) + '\n')
+    f.write(']')
