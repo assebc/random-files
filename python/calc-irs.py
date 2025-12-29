@@ -1,5 +1,4 @@
 # ---------------- Interactive IRS 2025 Calculator (with IRS Jovem) ----------------
-
 IAS_2025 = 522.50
 IRS_JOVEM_LIMIT_MULTIPLIER = 55
 SPECIFIC_DEDUCTION_CAT_A_2025 = 4462.15
@@ -34,7 +33,7 @@ def progressive_tax(amount):
 
 def get_irs_jovem_percentage(year: int) -> float:
     """Return exemption percentage for the given IRS Jovem year."""
-    mapping = {1: 1.00, 2: 0.75, 3: 0.75, 4: 0.75, 5: 0.50}
+    mapping = {1: 1.00, 2: 0.75, 3: 0.75, 4: 0.75, 5: 0.50, 6: 0.5, 7: 0.25, 8: 0.25 }
     return mapping.get(year, 0.0)
 
 def calculate_irs_2025_with_irs_jovem(gross_income: float, jovem_year: int):
@@ -63,7 +62,7 @@ def calculate_irs_2025_with_irs_jovem(gross_income: float, jovem_year: int):
 
 try:
     gross_income = float(input("Enter your annual gross salary (€): ").strip().replace(",", "."))
-    jovem_year = int(input("Enter your IRS Jovem year (1–5): ").strip())
+    jovem_year = int(input("Enter your IRS Jovem year (1–8): ").strip())
 
     calculate_irs_2025_with_irs_jovem(gross_income, jovem_year)
 
