@@ -1,7 +1,7 @@
 :Wq# ---------------- Interactive IRS 2026 Calculator (with IRS Jovem) ----------------
 IAS_2026 = 537.13
 IRS_JOVEM_LIMIT_MULTIPLIER = 55
-SPECIFIC_DEDUCTION_CAT_A_2026 = 2587.09
+SPECIFIC_DEDUCTION_CAT_A_2026 = 4587.09
 
 # 2026 IRS brackets (marginal rates)
 IRS_2026_BRACKETS = [
